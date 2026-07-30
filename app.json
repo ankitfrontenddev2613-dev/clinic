@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "clinic",
-    "slug": "clinic",
+    "slug": "smart-clinic",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -17,7 +17,8 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.ankitchauhan13.smartclinic"
     },
     "web": {
       "output": "static",
@@ -28,15 +29,23 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
-          "image": "./assets/images/splash-icon.png",
+          "backgroundColor": "#12312B",
+          "image": "./assets/images/logo.png",
           "imageWidth": 76
         }
-      ]
+      ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "9b866423-a7af-4b42-9975-ea7140aabf7d"
+      }
+    },
+    "owner": "ankit-chauhan13"
   }
 }
