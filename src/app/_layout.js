@@ -35,6 +35,7 @@ const RootLayout = () => {
     Poppins_700Bold,
     Sora_100Thin,
     Sora_400Regular,
+    Sora_500Medium,
     Sora_600SemiBold,
     Sora_700Bold,
     Sora_800ExtraBold,

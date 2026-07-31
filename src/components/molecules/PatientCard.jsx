@@ -1,4 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
+import AvatarBadge from '../atoms/AvatarBadge';
+import Details from '../atoms/Details';
+import QueueBadge from '../atoms/QueueBadge';
 
 const PatientCard = ({ initials, name, time, department, queueNumber }) => {
   return (
@@ -6,20 +9,15 @@ const PatientCard = ({ initials, name, time, department, queueNumber }) => {
       <View style={styles.card}>
         {/* Top Row: Initials, Details & Queue Badge */}
         <View style={styles.cardHeader}>
-          <View style={styles.avatar}>
-            <Text style={styles.avatarText}>{initials}</Text>
-          </View>
-
-          <View style={styles.patientInfo}>
-            <Text style={styles.patientName}>{name}</Text>
-            <Text style={styles.patientDetails}>
-              {time}  •  {department}
-            </Text>
-          </View>
-
-          <View style={styles.queueBadge}>
-            <Text style={styles.queueBadgeText}>{queueNumber}</Text>
-          </View>
+          <AvatarBadge
+            initials={initials}
+          />
+          <Details
+            name={name}
+            specialization={department}
+            experience={time}
+          />
+          <QueueBadge queueNumber={queueNumber}/>
         </View>
       </View>
 

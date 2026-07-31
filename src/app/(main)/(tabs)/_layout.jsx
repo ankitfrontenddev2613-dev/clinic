@@ -19,7 +19,7 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="doctorTeam"
+        name="doctor-Team"
         options={{
           title: '',
           tabBarIcon: ({ color, size }) => (
