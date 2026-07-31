@@ -54,7 +54,12 @@ const DoctorScreen = () => {
               doctor={item}
               onToggleAvailability={toggleAvailability}
               onDelete={deleteDoctor}
-              onPress={openDoctor}
+              onPress={() =>
+                router.push({
+                  pathName: '/(tabs)/doctor-team/[id]',
+                  params: { id: item.id }
+                })
+              }
             />
           )}
           showsVerticalScrollIndicator={true}

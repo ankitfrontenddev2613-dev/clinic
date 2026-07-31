@@ -10,9 +10,7 @@ const QueueCard = ({ token, nextPatient, appointments, waitingTime }) => {
       <View style={styles.cardHeader}>
         <View style={styles.columnOne}>
           <View style={styles.rowText}>
-            <Text style={styles.textNow}>now Serving</Text>
-            <Text style={styles.textNow}>.</Text>
-            <Text style={styles.textNow}>OPD 1</Text>
+            <Text style={styles.textNow}>now Serving . OPD 1</Text>
           </View>
           <Text style={styles.tokenText}>0{token}</Text>
         </View>

@@ -5,8 +5,8 @@ import DoctorScreen from '../../../../screens/DoctorScreen'
 const DoctorTeam = () => {
   return (
     <>
-      <DoctorScreen/>
-    </> 
+      <DoctorScreen />
+    </>
   )
 }
 

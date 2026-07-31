@@ -28,9 +28,8 @@ export default function TabLayout() {
           ),
         }}
       />
-
       <Tabs.Screen
-        name="profile"
+        name="livequeue"
         options={{
           title: '',
           tabBarIcon: ({ color, size }) => (
@@ -39,7 +38,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="counter"
+        name="profile"
         options={{
           title: '',
           tabBarIcon: ({ color, size }) => (
@@ -47,6 +46,7 @@ export default function TabLayout() {
           ),
         }}
       />
+
     </Tabs>
   );
 }
