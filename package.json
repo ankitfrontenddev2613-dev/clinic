@@ -9,7 +9,6 @@
     "@expo-google-fonts/sora": "^0.4.2",
     "@expo/ui": "~57.0.6",
     "@expo/vector-icons": "^15.1.1",
-    "@react-navigation/bottom-tabs": "^7.18.14",
     "@react-navigation/material-top-tabs": "^7.6.13",
     "@react-navigation/native": "^7.3.14",
     "@reduxjs/toolkit": "^2.12.0",

@@ -1,22 +1,21 @@
 import { useState } from 'react'
 import { FlatList, Pressable, StyleSheet, View } from 'react-native'
-import PatientDetailsModal from '../../../components/modals/PatientDetailsModal'
-import ActionButtons from '../../../components/molecules/ActionButtons'
-import PatientCard from '../../../components/molecules/PatientCard'
+import PatientDetailsModal from '../../modals/PatientDetailsModal'
+import PatientCard from '../PatientCard'
 
 // Mock patient data array
 const data = [
   {
     id: '1',
-    queueNumber: '#1',
-    initials: 'RV',
-    name: 'Rahul Verma',
-    time: '2:00 PM',
-    department: 'Cardiology',
+    cancelled: 'cancelled',
+    initials: 'RS',
+    name: 'Rohit Sharma',
+    time: '2:30 PM',
+    department: 'Dermatology',
   },
   {
     id: '2',
-    queueNumber: '#2',
+    cancelled: 'cancelled',
     initials: 'SI',
     name: 'Sana Iyer',
     time: '2:30 PM',
@@ -24,7 +23,7 @@ const data = [
   },
   {
     id: '3',
-    queueNumber: '#3',
+    cancelled: 'cancelled',
     initials: 'SI',
     name: 'Ankit Chauhan',
     time: '3:50 PM',
@@ -32,15 +31,22 @@ const data = [
   },
   {
     id: '4',
-    queueNumber: '#4',
+    cancelled: 'cancelled',
+    initials: 'RV',
+    name: 'Rahul Verma',
+    time: '2:00 PM',
+    department: 'Cardiology',
+  },
+  {
+    id: '5',
+    cancelled: 'cancelled',
     initials: 'DA',
     name: 'Divya Chauhan',
     time: '4:50 PM',
     department: 'Cardiology',
   },
 ]
-
-const Queue = () => {
+const Cancelled = () => {
   const [selectedPatient, setSelectedPatient] = useState(null)
   const openPatientDetails = (patient) => {
     setSelectedPatient(patient)
@@ -51,8 +57,9 @@ const Queue = () => {
   return (
     <View style={{ flex: 1 }}>
       <FlatList
+        showsVerticalScrollIndicator={true}
         data={data}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.listContainer}
         renderItem={({ item, index }) => (
           <View style={styles.container}>
@@ -62,16 +69,15 @@ const Queue = () => {
                 pressed && styles.pressed,
               ]}
             >
+
               <PatientCard
                 name={item?.name}
                 initials={item?.initials}
                 time={item?.time}
                 department={item?.department}
-                queueNumber={item?.queueNumber}
+                queueNumber={item?.cancelled}
               />
             </Pressable>
-            <View style={styles.divider} />
-            <ActionButtons />
             {/* Patient Details Modal */}
             <PatientDetailsModal
               patient={selectedPatient}
@@ -83,11 +89,10 @@ const Queue = () => {
         }
       />
     </View>
-
   )
 }
 
-export default Queue
+export default Cancelled
 
 const styles = StyleSheet.create({
   container: {

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { moderateScale, verticalScale } from 'react-native-size-matters';
-import Cancelled from '../../app/(main)/(tabs)/Cancelled';
-import Complete from '../../app/(main)/(tabs)/Complete';
-import Queue from '../../app/(main)/(tabs)/Queue';
+import Cancelled from './homeTabs/Cancelled';
+import Complete from './homeTabs/Complete';
+import Queue from './homeTabs/Queue';
 
 
 const AppointmentTabs = () => {

@@ -18,6 +18,8 @@ const DoctorAvailableModal = ({ visible, onClose }) => {
         onRequestClose={onClose}
       >
         <View style={styles.overlay}>
+          <Pressable onPress={onClose} style={styles.overlays}>
+          </Pressable>
           <View style={styles.modalContainer}>
 
             {/* Drag Indicator */}
@@ -64,9 +66,14 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: "flex-end",
-    backgroundColor: "rgba(0,0,0,0.35)",
   },
-
+  overlays: {
+    position: 'absolute',
+    top: 0,
+    backgroundColor: 'rgba(10, 45, 40, 0.45)',
+    width: '100%',
+    height: '100%'
+  },
   modalContainer: {
     backgroundColor: "#fff",
     borderTopLeftRadius: 28,

@@ -21,7 +21,9 @@ const PatientDetailsModal = ({
       onRequestClose={onClose}
     >
       <View style={styles.overlay}>
+        <Pressable onPress={onClose} style={styles.overlays}>
 
+        </Pressable>
         <View style={styles.modalContainer}>
 
           {/* Top Handle */}
@@ -113,10 +115,15 @@ export default PatientDetailsModal
 const styles = StyleSheet.create({
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(10, 45, 40, 0.45)',
     justifyContent: 'flex-end',
   },
-
+  overlays: {
+    position: 'absolute',
+    top: 0,
+    backgroundColor: 'rgba(10, 45, 40, 0.45)',
+    width: '100%',
+    height: '100%'
+  },
   modalContainer: {
     backgroundColor: '#F5F7F2',
     borderTopLeftRadius: 32,
