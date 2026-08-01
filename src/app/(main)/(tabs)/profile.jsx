@@ -1,10 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
+import HeaderTitle from '../../../components/molecules/HeaderTitle'
+import ScreenContainer from '../../../components/molecules/ScreenContainer'
 
 const Profile = () => {
   return (
-    <View>
-      <Text>Profile</Text>
-    </View>
+    <ScreenContainer>
+      <HeaderTitle Title='Clinic profile' SubTitle='Account' />
+      <View>
+        
+      </View>
+    </ScreenContainer>
   )
 }
 
