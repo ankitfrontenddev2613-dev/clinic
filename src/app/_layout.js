@@ -13,7 +13,7 @@ import {
   Poppins_600SemiBold,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
-import { Sora_100Thin, Sora_400Regular, Sora_500Medium, Sora_600SemiBold, Sora_700Bold, Sora_800ExtraBold } from "@expo-google-fonts/sora";
+import { Sora_100Thin, Sora_200ExtraLight, Sora_300Light, Sora_400Regular, Sora_500Medium, Sora_600SemiBold, Sora_700Bold, Sora_800ExtraBold } from "@expo-google-fonts/sora";
 import { Redirect, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useRef, useState } from "react";
@@ -34,6 +34,8 @@ const RootLayout = () => {
     Poppins_600SemiBold,
     Poppins_700Bold,
     Sora_100Thin,
+    Sora_200ExtraLight,
+    Sora_300Light,
     Sora_400Regular,
     Sora_500Medium,
     Sora_600SemiBold,

@@ -2,10 +2,11 @@ import { Link } from 'expo-router'
 import { StyleSheet, Text } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 
-const Button = ({ title, href, buttonStyle, textStyle }) => {
+const Button = ({ title, href, buttonStyle, textStyle, children }) => {
   return (
     <>
       <Link href={href} style={[styles.button, buttonStyle]}>
+        {children}
         <Text style={[styles.text, textStyle]}>{title}</Text>
       </Link>
     </>
