@@ -1,16 +1,14 @@
-import { ScrollView, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { moderateScale } from 'react-native-size-matters'
-import HomeScreen from '../../../screens/HomeScreen'
+import HomeScreen from '../../../../screens/HomeScreen'
 
 
 const Main = () => {
   return (
     <SafeAreaProvider style={styles.container}>
-      <ScrollView overScrollMode="never">
-        <HomeScreen homeStyle="{{gap: 10 , height: '70vh'} }">
-        </HomeScreen>
-      </ScrollView>
+      <HomeScreen homeStyle="{{gap: 10 , height: '70vh'} }">
+      </HomeScreen>
     </SafeAreaProvider>
   )
 }

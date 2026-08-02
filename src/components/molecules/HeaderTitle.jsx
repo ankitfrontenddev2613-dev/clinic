@@ -15,12 +15,13 @@ export default HeaderTitle
 const styles = StyleSheet.create({
   titleCard: {
     flexDirection: 'column',
-    gap: 5
+    gap: 5,
+    marginBottom: 10
   },
   subTitle: {
     letterSpacing: 2,
     textTransform: 'uppercase',
-    fontFamily: "Sora_100Thin",
+    fontFamily: "Sora_400Regular",
     fontSize: moderateScale(12),
     color: '#000'
   },

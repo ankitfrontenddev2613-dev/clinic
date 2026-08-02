@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'black',
+    fontFamily: 'Montserrat_500Medium',
     fontWeight: 'semi-bold',
   }
 })

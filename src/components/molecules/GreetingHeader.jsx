@@ -1,10 +1,12 @@
 import { FontAwesome } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import { useState } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 import DoctorAvailableModal from '../modals/DoctorAvailableModal'
 
 const GreetingHeader = ({ greeting, clinicName }) => {
+  const router = useRouter()
   const [availableDoctor, setAvailableDoctor] = useState(false);
   return (
     <View style={styles.headerConteiner}>
@@ -25,7 +27,9 @@ const GreetingHeader = ({ greeting, clinicName }) => {
           onClose={() => setAvailableDoctor(false)}
         />
         <View style={styles.icons}>
-          <FontAwesome name="bell-o" color="#000" size={24} />
+          <Pressable onPress={() => router.push('/Notifications')}>
+            <FontAwesome name="bell-o" color="#000" size={24} />
+          </Pressable>
         </View>
       </View>
     </View>

@@ -6,6 +6,7 @@ import HeaderTitle from '../components/molecules/HeaderTitle'
 import Search from '../components/molecules/Search'
 import DoctorCard from '../components/organisms/DoctorCard'
 import { doctors as doctorsData } from "../data/doctors"
+import ScreenContainer from '../components/molecules/ScreenContainer'
 const DoctorScreen = () => {
   const [search, setSearch] = useState("");
 
@@ -40,32 +41,30 @@ const DoctorScreen = () => {
     // });
   };
   return (
-    <SafeAreaProvider style={styles.container}>
-      <SafeAreaView style={styles.cardColumn}>
-        <HeaderTitle Title='Doctor' SubTitle='TEAM' />
-        <Search placeholder="Search by name speciatly" onSearch={setSearch} />
-        <FlatList
-          data={filteredDoctors}
-          keyExtractor={(item) => item.id.toString()}
-          style={styles.flatList}
-          contentContainerStyle={{ gap: 20 }}
-          renderItem={({ item }) => (
-            <DoctorCard
-              doctor={item}
-              onToggleAvailability={toggleAvailability}
-              onDelete={deleteDoctor}
-              onPress={() =>
-                router.push({
-                  pathName: '/(tabs)/doctor-team/[id]',
-                  params: { id: item.id }
-                })
-              }
-            />
-          )}
-          showsVerticalScrollIndicator={true}
-        />
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <ScreenContainer childContainerStyle={styles.cardColumn } containerStyle={styles.container}>
+      <HeaderTitle Title='Doctor' SubTitle='TEAM' />
+      <Search placeholder="Search by name speciatly" onSearch={setSearch} />
+      <FlatList
+        data={filteredDoctors}
+        keyExtractor={(item) => item.id.toString()}
+        style={styles.flatList}
+        contentContainerStyle={{ gap: 20 }}
+        renderItem={({ item }) => (
+          <DoctorCard
+            doctor={item}
+            onToggleAvailability={toggleAvailability}
+            onDelete={deleteDoctor}
+            onPress={() =>
+              router.push({
+                pathName: '/(tabs)/doctor-team/[id]',
+                params: { id: item.id }
+              })
+            }
+          />
+        )}
+        showsVerticalScrollIndicator={false}
+      />
+    </ScreenContainer>
   )
 }
 
@@ -73,9 +72,7 @@ export default DoctorScreen
 
 const styles = StyleSheet.create({
   container: {
-    padding: moderateScale(15),
-    backgroundColor: '#f1f4ee',
-    borderRadius: 10
+  borderRadius: 10
   },
   cardColumn: {
     gap: 20,

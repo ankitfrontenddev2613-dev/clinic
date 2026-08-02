@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { ScrollView, StyleSheet } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 import { SafeAreaView } from 'react-native-web'
 import AppointmentTabs from '../components/molecules/AppointmentTabs'
@@ -15,7 +15,9 @@ const HomeScreen = ({ homeStyle }) => {
         nextPatient="Ankit Chauhan"
         appointments={12}
         waitingTime={12} />
-      <AppointmentTabs />
+        <ScrollView showsHorizontalScrollIndicator={false}>
+          <AppointmentTabs />
+        </ScrollView>
     </SafeAreaView>
 
   )

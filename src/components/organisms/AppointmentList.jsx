@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const PATIENTS = [
   {
@@ -20,58 +20,66 @@ const PATIENTS = [
 ];
 const AppointmentList = () => {
   return (
-    <ScrollView contentContainerStyle={styles.listContent}>
-      {PATIENTS.map((patient, index) => (
-        <View key={patient.id} style={styles.cardWrapper}>
-          {/* Left Timeline Line & Dot */}
-          <View style={styles.timelineContainer}>
-            <View style={styles.timelineDot} />
-            {index < PATIENTS.length - 1 && <View style={styles.timelineLine} />}
-          </View>
-
-          {/* Main Patient Card */}
-          <View style={styles.card}>
-            {/* Top Row: Initials, Details & Queue Badge */}
-            <View style={styles.cardHeader}>
-              <View style={styles.avatar}>
-                <Text style={styles.avatarText}>{patient.initials}</Text>
+    <View style={{ marginBottom: 15 }}>
+      <FlatList
+        contentContainerStyle={{ marginVertical: 10 }}
+        horizontal
+        data={PATIENTS}
+        renderItem={({ item }) => {
+          return (
+            <View key={item.id} style={styles.cardWrapper}>
+              {/* Left Timeline Line & Dot */}
+              <View style={styles.timelineContainer}>
+                <View style={styles.timelineDot} />
+                {index < item.length - 1 && <View style={styles.timelineLine} />}
               </View>
 
-              <View style={styles.patientInfo}>
-                <Text style={styles.patientName}>{patient.name}</Text>
-                <Text style={styles.patientDetails}>
-                  {patient.time}  •  {patient.department}
-                </Text>
-              </View>
+              {/* Main Patient Card */}
+              <View style={styles.card}>
+                {/* Top Row: Initials, Details & Queue Badge */}
+                <View style={styles.cardHeader}>
+                  <View style={styles.avatar}>
+                    <Text style={styles.avatarText}>{item.initials}</Text>
+                  </View>
 
-              <View style={styles.queueBadge}>
-                <Text style={styles.queueBadgeText}>{patient.queueNumber}</Text>
+                  <View style={styles.patientInfo}>
+                    <Text style={styles.patientName}>{patient.name}</Text>
+                    <Text style={styles.patientDetails}>
+                      {item.time}  •  {item.department}
+                    </Text>
+                  </View>
+
+                  <View style={styles.queueBadge}>
+                    <Text style={styles.queueBadgeText}>{item.queueNumber}</Text>
+                  </View>
+                </View>
+
+                <View style={styles.divider} />
+
+                {/* Bottom Row: Action Buttons */}
+                <View style={styles.actionRow}>
+                  {/* Pick Button */}
+                  <TouchableOpacity style={[styles.actionBtn, styles.pickBtn]}>
+                    <Text style={styles.pickBtnText}>✓  Pick</Text>
+                  </TouchableOpacity>
+
+                  {/* Skip Button */}
+                  <TouchableOpacity style={[styles.actionBtn, styles.skipBtn]}>
+                    <Text style={styles.skipBtnText}>▷|  Skip</Text>
+                  </TouchableOpacity>
+
+                  {/* Cancel Button */}
+                  <TouchableOpacity style={[styles.actionBtn, styles.cancelBtn]}>
+                    <Text style={styles.cancelBtnText}>✕  Cancel</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
+          )
+        }}
+      />
 
-            <View style={styles.divider} />
-
-            {/* Bottom Row: Action Buttons */}
-            <View style={styles.actionRow}>
-              {/* Pick Button */}
-              <TouchableOpacity style={[styles.actionBtn, styles.pickBtn]}>
-                <Text style={styles.pickBtnText}>✓  Pick</Text>
-              </TouchableOpacity>
-
-              {/* Skip Button */}
-              <TouchableOpacity style={[styles.actionBtn, styles.skipBtn]}>
-                <Text style={styles.skipBtnText}>▷|  Skip</Text>
-              </TouchableOpacity>
-
-              {/* Cancel Button */}
-              <TouchableOpacity style={[styles.actionBtn, styles.cancelBtn]}>
-                <Text style={styles.cancelBtnText}>✕  Cancel</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      ))}
-    </ScrollView>
+    </View>
   )
 }
 
