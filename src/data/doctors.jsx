@@ -16,32 +16,5 @@ export const doctors = [
     specialization: "Dermatologist",
     experience: "7 yrs",
     available: true,
-  },
-  {
-    id: 3,
-    initials: "NP",
-    avatarColor: "#DFF1EF",
-    name: "Dr. Neha Pillai",
-    specialization: "Dermatologist",
-    experience: "7 yrs",
-    available: true,
-  },
-  {
-    id: 4,
-    initials: "NP",
-    avatarColor: "#DFF1EF",
-    name: "Dr. Neha Pillai",
-    specialization: "Dermatologist",
-    experience: "7 yrs",
-    available: true,
-  },
-  {
-    id: 5,
-    initials: "NP",
-    avatarColor: "#DFF1EF",
-    name: "Dr. Neha Pillai",
-    specialization: "Dermatologist",
-    experience: "7 yrs",
-    available: true,
-  },
+  }
 ];

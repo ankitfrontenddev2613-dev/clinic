@@ -17,9 +17,8 @@ export default function TabLayout() {
           ),
         }}
       />
-
       <Tabs.Screen
-        name="doctor-Team"
+        name="(doctor)"
         options={{
           title: '',
           tabBarIcon: ({ color, size }) => (
@@ -29,7 +28,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="livequeue"
+        name="(queue)"
         options={{
           title: '',
           tabBarIcon: ({ color, size }) => (

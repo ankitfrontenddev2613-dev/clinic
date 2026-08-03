@@ -7,7 +7,10 @@ import Search from '../components/molecules/Search'
 import DoctorCard from '../components/organisms/DoctorCard'
 import { doctors as doctorsData } from "../data/doctors"
 import ScreenContainer from '../components/molecules/ScreenContainer'
+import { useRouter } from 'expo-router'
+import CircleIconButton from '../components/atoms/CircleIconButton'
 const DoctorScreen = () => {
+  const router = useRouter();
   const [search, setSearch] = useState("");
 
   const [doctors, setDoctors] = useState(doctorsData);
@@ -64,6 +67,7 @@ const DoctorScreen = () => {
         )}
         showsVerticalScrollIndicator={false}
       />
+      <CircleIconButton/>
     </ScreenContainer>
   )
 }
@@ -72,7 +76,8 @@ export default DoctorScreen
 
 const styles = StyleSheet.create({
   container: {
-  borderRadius: 10
+  borderRadius: 10,
+  position: 'relative'
   },
   cardColumn: {
     gap: 20,

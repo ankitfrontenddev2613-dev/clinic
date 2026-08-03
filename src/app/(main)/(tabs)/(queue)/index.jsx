@@ -2,10 +2,10 @@ import { FontAwesome6 } from '@expo/vector-icons'
 import { StyleSheet, Text, View } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { moderateScale } from 'react-native-size-matters'
-import BackButton from '../../../components/atoms/BackButton'
-import Button from '../../../components/atoms/Button'
-import LinearBackgroundColor from '../../../components/atoms/LinearBackgroundColor'
-import HeaderTitle from '../../../components/molecules/HeaderTitle'
+import BackButton from '../../../../components/atoms/BackButton'
+import Button from '../../../../components/atoms/Button'
+import LinearBackgroundColor from '../../../../components/atoms/LinearBackgroundColor'
+import HeaderTitle from '../../../../components/molecules/HeaderTitle'
 
 
 const Counter = ({ token }) => {
