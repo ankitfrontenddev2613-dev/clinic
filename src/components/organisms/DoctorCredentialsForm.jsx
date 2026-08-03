@@ -1,4 +1,7 @@
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
+import { useState } from 'react'
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import FormDateField from '../atoms/FormDateField'
 import FormDropdown from '../atoms/FormDropdown'
 import SectionHeader from '../atoms/SectionHeader'
 
@@ -169,4 +172,35 @@ const DoctorCredentialsForm = () => {
 
 export default DoctorCredentialsForm;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    backgroundColor: '#EEF1EA',
+  },
+  scrollContent: {
+    padding: 16,
+    paddingBottom: 40,
+  },
+  row: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  halfField: {
+    flex: 1,
+  },
+  fieldContainer: {
+    marginBottom: 16,
+  },
+  saveButton: {
+    backgroundColor: '#173A2E',
+    borderRadius: 30,
+    paddingVertical: 16,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  saveButtonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+})

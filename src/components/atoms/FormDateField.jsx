@@ -1,4 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
+import { DateTimePickerAndroid } from '@react-native-community/datetimepicker'
+import { useState } from 'react'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
+import FieldLabel from './fieldLabel'
 
 const FormDateField = ({ label, value, onChange }) => {
   const [show, setShow] = useState(false)
@@ -19,7 +23,7 @@ const FormDateField = ({ label, value, onChange }) => {
       </Pressable>
 
       {show && (
-        <DateTimePicker
+        <DateTimePickerAndroid
           value={value || new Date(1990, 0, 1)}
           mode="date"
           display={Platform.OS === 'ios' ? 'spinner' : 'default'}
@@ -34,6 +38,6 @@ const FormDateField = ({ label, value, onChange }) => {
   )
 }
 
-export default FromDateField
+export default FormDateField
 
 const styles = StyleSheet.create({})

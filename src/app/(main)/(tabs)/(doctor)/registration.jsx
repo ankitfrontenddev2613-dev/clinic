@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
-import HeaderTitle from '../../../components/molecules/HeaderTitle'
-import ScreenContainer from '../../../components/molecules/ScreenContainer'
-import DoctorCredentialsForm from '../../../components/organisms/DoctorCredentialsForm'
+import HeaderTitle from '../../../../components/molecules/HeaderTitle'
+import ScreenContainer from '../../../../components/molecules/ScreenContainer'
+import DoctorCredentialsForm from '../../../../components/organisms/DoctorCredentialsForm'
 
 const Registration = () => {
 

@@ -3,7 +3,7 @@ import { useRouter } from 'expo-router'
 import { Pressable, StyleSheet } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 
-const CircleIconButton = ({onPress}) => {
+const CircleIconButton = ({ onPress }) => {
   const router = useRouter()
 
   return (
