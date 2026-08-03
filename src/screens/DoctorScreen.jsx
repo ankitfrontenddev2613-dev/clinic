@@ -1,14 +1,12 @@
+import { useRouter } from 'expo-router'
 import { useState } from 'react'
 import { FlatList, StyleSheet } from 'react-native'
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
-import { moderateScale } from 'react-native-size-matters'
+import CircleIconButton from '../components/atoms/CircleIconButton'
 import HeaderTitle from '../components/molecules/HeaderTitle'
+import ScreenContainer from '../components/molecules/ScreenContainer'
 import Search from '../components/molecules/Search'
 import DoctorCard from '../components/organisms/DoctorCard'
 import { doctors as doctorsData } from "../data/doctors"
-import ScreenContainer from '../components/molecules/ScreenContainer'
-import { useRouter } from 'expo-router'
-import CircleIconButton from '../components/atoms/CircleIconButton'
 const DoctorScreen = () => {
   const router = useRouter();
   const [search, setSearch] = useState("");
@@ -43,8 +41,11 @@ const DoctorScreen = () => {
     //   params: { id: doctor.id },
     // });
   };
+  const openDoctorRegistation = () => {
+    router.push('/doctorRegistration')
+  }
   return (
-    <ScreenContainer childContainerStyle={styles.cardColumn } containerStyle={styles.container}>
+    <ScreenContainer childContainerStyle={styles.cardColumn} containerStyle={styles.container}>
       <HeaderTitle Title='Doctor' SubTitle='TEAM' />
       <Search placeholder="Search by name speciatly" onSearch={setSearch} />
       <FlatList
@@ -67,7 +68,7 @@ const DoctorScreen = () => {
         )}
         showsVerticalScrollIndicator={false}
       />
-      <CircleIconButton/>
+      <CircleIconButton onPress={openDoctorRegistation()} />
     </ScreenContainer>
   )
 }
@@ -76,8 +77,8 @@ export default DoctorScreen
 
 const styles = StyleSheet.create({
   container: {
-  borderRadius: 10,
-  position: 'relative'
+    borderRadius: 10,
+    position: 'relative'
   },
   cardColumn: {
     gap: 20,

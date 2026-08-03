@@ -2,9 +2,9 @@ import { AntDesign } from '@expo/vector-icons'
 import { Pressable, StyleSheet } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 
-const CircleIconButton = () => {
+const CircleIconButton = ({ onPress }) => {
   return (
-    <Pressable onPress={() => console.log('click')} style={styles.plusIcon}>
+    <Pressable onPress={onPress} style={styles.plusIcon}>
       <AntDesign name="plus" size={25} color={'#000'} />
     </Pressable>
   )

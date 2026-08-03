@@ -4,6 +4,7 @@ export default function DoctorLayout() {
   return (
     <Stack screenOptions={{ headerShown: true }}>
       <Stack.Screen options={{ headerShown: false }} name="index" />
+      <Stack.Screen options={{ headerShown: true }} name="doctoeRegistration" />
       <Stack.Screen name="[id]" />
       <Stack.Screen name="working-hours" />
       <Stack.Screen name="edit" />

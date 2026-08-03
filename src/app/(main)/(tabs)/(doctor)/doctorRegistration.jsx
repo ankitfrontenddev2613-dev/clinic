@@ -1,11 +1,14 @@
 import { StyleSheet } from 'react-native'
 import HeaderTitle from '../../../../components/molecules/HeaderTitle'
 import ScreenContainer from '../../../../components/molecules/ScreenContainer'
+import FromUi from '../../../../components/organisms/FromUi'
 
 const doctorRegistration = () => {
+
   return (
     <ScreenContainer childContainerStyle={{ gap: 10 }} containerStyle={{ flex: 1 }}>
       <HeaderTitle SubTitle='New Team Member' Title='New doctor registration' />
+      <FromUi />
     </ScreenContainer>
   )
 }
