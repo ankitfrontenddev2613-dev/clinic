@@ -41,9 +41,6 @@ const DoctorScreen = () => {
     //   params: { id: doctor.id },
     // });
   };
-  const openDoctorRegistation = () => {
-    router.push('/doctorRegistration')
-  }
   return (
     <ScreenContainer childContainerStyle={styles.cardColumn} containerStyle={styles.container}>
       <HeaderTitle Title='Doctor' SubTitle='TEAM' />
@@ -68,7 +65,7 @@ const DoctorScreen = () => {
         )}
         showsVerticalScrollIndicator={false}
       />
-      <CircleIconButton onPress={openDoctorRegistation()} />
+      <CircleIconButton />
     </ScreenContainer>
   )
 }
@@ -82,6 +79,7 @@ const styles = StyleSheet.create({
   },
   cardColumn: {
     gap: 20,
+    position: 'relative',
   }, flatList: {
     gap: 10
   }

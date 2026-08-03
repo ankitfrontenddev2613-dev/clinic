@@ -1,8 +1,11 @@
 import { AntDesign } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import { Pressable, StyleSheet } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 
-const CircleIconButton = ({ onPress }) => {
+const CircleIconButton = ({onPress}) => {
+  const router = useRouter()
+
   return (
     <Pressable onPress={onPress} style={styles.plusIcon}>
       <AntDesign name="plus" size={25} color={'#000'} />
