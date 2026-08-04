@@ -1,7 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { FlatList, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import FieldLabel from './FieldLabel';
+
 
 const FormDropdown = ({ icon, iconName, label, value, options, onSelect, placeholder }) => {
   const [visible, setVisible] = useState(false)
@@ -51,17 +53,35 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: '#FFFFFF',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: moderateScale(20),
+    borderTopRightRadius: moderateScale(20),
     maxHeight: '50%',
-    paddingVertical: 8,
+    paddingVertical: moderateScale(8),
   },
   optionRow: {
-    paddingVertical: 14,
-    paddingHorizontal: 20,
+    paddingVertical: moderateScale(14),
+    paddingHorizontal: moderateScale(20),
+
   },
   optionText: {
-    fontSize: 15,
+    fontSize: moderateScale(15),
     color: '#2A2A2A',
+    fontFamily: 'Montserrat_500Medium'
   },
+  inputBox: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: moderateScale(14),
+    paddingHorizontal: moderateScale(16),
+    paddingVertical: moderateScale(14),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: moderateScale(45),
+  },
+  inputText: {
+    fontSize: moderateScale(15),
+    color: '#2A2A2A',
+    flex: 1,
+    fontFamily: 'Montserrat_500Medium'
+  }
 })

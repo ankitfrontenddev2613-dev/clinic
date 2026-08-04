@@ -1,7 +1,8 @@
 import { StyleSheet, TextInput, View } from 'react-native'
+import { moderateScale } from 'react-native-size-matters'
 import FieldLabel from './FieldLabel'
 
-const FromInput = ({ icon, iconName, label, value, onChangeText, placeholder, keyboardType }) => {
+const FormInput = ({ icon, iconName, label, value, onChangeText, placeholder, keyboardType }) => {
   return (
     <View style={styles.fieldContainer}>
       <FieldLabel icon={icon} iconName={iconName} label={label} />
@@ -19,26 +20,31 @@ const FromInput = ({ icon, iconName, label, value, onChangeText, placeholder, ke
   )
 }
 
-export default FromInput
+export default FormInput
 
 const styles = StyleSheet.create({
   labelText: {
-    fontSize: 13,
+    fontSize: moderateScale(13),
     color: '#5B6B5B',
     fontWeight: '500',
+    fontFamily: 'Montserrat_500Medium'
   },
   inputBox: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 14,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   inputText: {
-    fontSize: 15,
+    fontSize: moderateScale(14),
     color: '#2A2A2A',
+    fontFamily: 'Montserrat_500Medium',
+    height: moderateScale(45),
     flex: 1,
+    paddingHorizontal: moderateScale(16),
+    paddingVertical: moderateScale(14),
+    borderRadius: moderateScale(15),
+    backgroundColor: '#FFFFFF',
+    borderColor: '#fff',
+    width: '100%'
   },
 })

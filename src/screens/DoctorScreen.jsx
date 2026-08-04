@@ -65,7 +65,7 @@ const DoctorScreen = () => {
         )}
         showsVerticalScrollIndicator={false}
       />
-      <CircleIconButton />
+      <CircleIconButton onPress={() => router.push('/working-hours')} />
     </ScreenContainer>
   )
 }

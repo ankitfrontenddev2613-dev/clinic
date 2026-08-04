@@ -1,11 +1,15 @@
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import { useState } from 'react'
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { moderateScale } from 'react-native-size-matters'
 import FormDateField from '../atoms/FormDateField'
 import FormDropdown from '../atoms/FormDropdown'
-import SectionHeader from '../atoms/SectionHeader'
+import { default as FormInput } from '../atoms/FormInput'
+import { default as SectionHeader } from '../atoms/SectionHeader'
 
 const DoctorCredentialsForm = () => {
+  const router = useRouter();
   const [fullName, setFullName] = useState('')
   const [gender, setGender] = useState('')
   const [dob, setDob] = useState(null)
@@ -27,10 +31,11 @@ const DoctorCredentialsForm = () => {
       qualification, gradYear, medicalCouncil, regNumber, specialization, experience,
       clinicName, fees,
     })
+    router.push('/(doctor)')
   }
 
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.scrollContent}>
+    <ScrollView showsHorizontalScrollIndicator={false} style={styles.screen} contentContainerStyle={styles.scrollContent}>
       <FormInput
         icon={Ionicons}
         iconName="person-outline"
@@ -166,6 +171,7 @@ const DoctorCredentialsForm = () => {
       <Pressable style={styles.saveButton} onPress={handleSave}>
         <Text style={styles.saveButtonText}>Save & verify credentials</Text>
       </Pressable>
+      <Text style={styles.noticeText}>All credentials will be verified against the National Medical Register (NMR).</Text>
     </ScrollView>
   )
 }
@@ -174,12 +180,13 @@ export default DoctorCredentialsForm;
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
     backgroundColor: '#EEF1EA',
+    height: '70vh',
+    paddingBottom: moderateScale(40)
   },
   scrollContent: {
-    padding: 16,
-    paddingBottom: 40,
+    paddingBottom: moderateScale(40),
+    gap: 20
   },
   row: {
     flexDirection: 'row',
@@ -189,18 +196,24 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   fieldContainer: {
-    marginBottom: 16,
+    marginBottom: moderateScale(16),
   },
   saveButton: {
     backgroundColor: '#173A2E',
-    borderRadius: 30,
-    paddingVertical: 16,
+    borderRadius: moderateScale(30),
+    paddingVertical: moderateScale(16),
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: moderateScale(10),
   },
   saveButtonText: {
     color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: moderateScale(16),
+    fontFamily: 'Montserrat_500Medium'
   },
+  noticeText: {
+    color: 'rgb(92 107 98 )',
+    fontSize: moderateScale(12),
+    fontFamily: 'Montserrat_500Medium',
+    textAlign: 'center',
+  }
 })

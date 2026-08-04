@@ -2,7 +2,8 @@ import { Ionicons } from '@expo/vector-icons'
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker'
 import { useState } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import FieldLabel from './fieldLabel'
+import { moderateScale } from 'react-native-size-matters'
+import FieldLabel from './FieldLabel'
 
 const FormDateField = ({ label, value, onChange }) => {
   const [show, setShow] = useState(false)
@@ -40,4 +41,21 @@ const FormDateField = ({ label, value, onChange }) => {
 
 export default FormDateField
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  inputBox: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: moderateScale(12),
+    paddingHorizontal: moderateScale(16),
+    paddingVertical: moderateScale(14),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: moderateScale(45)
+  },
+  inputText: {
+    fontSize: moderateScale(14),
+    color: '#2A2A2A',
+    flex: 1,
+    fontFamily: 'Montserrat_500Medium',
+  }
+})
