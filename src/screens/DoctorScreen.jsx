@@ -65,7 +65,7 @@ const DoctorScreen = () => {
         )}
         showsVerticalScrollIndicator={false}
       />
-      <CircleIconButton onPress={() => router.push('/edit')} />
+      <CircleIconButton onPress={() => router.push('/registration')} />
     </ScreenContainer>
   )
 }

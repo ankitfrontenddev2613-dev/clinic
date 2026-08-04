@@ -11,6 +11,7 @@ import {
 } from 'react-native'
 import BackButton from '../../../../components/atoms/BackButton'
 import FormDropdown from '../../../../components/atoms/FormDropdown'
+import HeaderTitle from '../../../../components/molecules/HeaderTitle'
 import SessionSection from '../../../../components/molecules/SessionSection'
 
 // ---------- Dropdown Field ----------
@@ -84,6 +85,7 @@ const ClinicHoursForm = () => {
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.scrollContent}>
       <BackButton />
+      <HeaderTitle Title="Working hours" SubTitle="Applies to Dr. Robert Smith's OPD counter." headingStyle={{ flexDirection: "row-reverse" }} />
       <FormDropdown
         icon={AntDesign}
         iconName="clock-circle"

@@ -1,11 +1,13 @@
+import { useRouter } from 'expo-router'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 import BackButton from '../../../../components/atoms/BackButton'
 import ScreenContainer from '../../../../components/molecules/ScreenContainer'
 
 const Edit = () => {
+  const router = useRouter()
   const handleSave = () => {
-
+    router.push('/working-hours')
   }
   return (
     <ScreenContainer childContainerStyle={{ gap: 20 }}>

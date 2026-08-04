@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 
-const HeaderTitle = ({ SubTitle, Title, subTitleStyle, titleStyle }) => {
+const HeaderTitle = ({ SubTitle, Title, headingStyle, subTitleStyle, titleStyle }) => {
   return (
-    <View style={styles.titleCard}>
+    <View style={[styles.titleCard, headingStyle]}>
       <Text style={[styles.subTitle, subTitleStyle]}>{SubTitle}</Text>
       <Text style={[styles.title, titleStyle]}>{Title}</Text>
     </View>
