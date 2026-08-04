@@ -1,107 +1,60 @@
-import { Ionicons } from '@expo/vector-icons'
-import DateTimePicker from '@react-native-community/datetimepicker'
+import { AntDesign, Feather, Ionicons } from '@expo/vector-icons'
 import { useState } from 'react'
 import {
   FlatList,
   Modal,
-  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
   Text,
-  View,
+  View
 } from 'react-native'
-import { ScreenContainer } from 'react-native-screens'
+import BackButton from '../../../../components/atoms/BackButton'
+import FormDropdown from '../../../../components/atoms/FormDropdown'
+import SessionSection from '../../../../components/molecules/SessionSection'
 
 // ---------- Dropdown Field ----------
 const IntervalDropdown = ({ value, options, onSelect }) => {
   const [visible, setVisible] = useState(false)
 
   return (
-    <ScreenContainer>
-      <View style={styles.fieldContainer}>
-        <View style={styles.labelRow}>
-          <Ionicons name="timer-outline" size={15} color="#5B6B5B" />
-          <Text style={styles.labelText}>Slot interval</Text>
-        </View>
-        <Pressable style={styles.inputBox} onPress={() => setVisible(true)}>
-          <Text style={styles.intervalText}>{value}</Text>
-          <Ionicons name="chevron-down" size={18} color="#5B6B5B" />
-        </Pressable>
-
-        <Modal visible={visible} transparent animationType="fade">
-          <Pressable style={styles.modalOverlay} onPress={() => setVisible(false)}>
-            <View style={styles.modalContent}>
-              <FlatList
-                data={options}
-                keyExtractor={(item) => item}
-                renderItem={({ item }) => (
-                  <Pressable
-                    style={styles.optionRow}
-                    onPress={() => {
-                      onSelect(item)
-                      setVisible(false)
-                    }}
-                  >
-                    <Text style={styles.optionText}>{item}</Text>
-                  </Pressable>
-                )}
-              />
-            </View>
-          </Pressable>
-        </Modal>
+    <View style={styles.fieldContainer}>
+      <View style={styles.labelRow}>
+        <Ionicons name="timer-outline" size={15} color="#5B6B5B" />
+        <Text style={styles.labelText}>Slot interval</Text>
       </View>
-    </ScreenContainer>
-  )
-}
-
-// ---------- Time Field ----------
-const TimeField = ({ label, value, onChange }) => {
-  const [show, setShow] = useState(false)
-
-  const formatTime = (date) => {
-    const h = String(date.getHours()).padStart(2, '0')
-    const m = String(date.getMinutes()).padStart(2, '0')
-    return `${h} : ${m}`
-  }
-
-  return (
-    <View style={styles.halfField}>
-      <Text style={styles.timeLabel}>{label}</Text>
-      <Pressable style={styles.timeBox} onPress={() => setShow(true)}>
-        <Text style={styles.timeText}>{formatTime(value)}</Text>
-        <Ionicons name="time-outline" size={17} color="#5B6B5B" />
+      <Pressable style={styles.inputBox} onPress={() => setVisible(true)}>
+        <Text style={styles.intervalText}>{value}</Text>
+        <Ionicons name="chevron-down" size={18} color="#5B6B5B" />
       </Pressable>
 
-      {show && (
-        <DateTimePicker
-          value={value}
-          mode="time"
-          is24Hour
-          display={Platform.OS === 'ios' ? 'spinner' : 'default'}
-          onChange={(event, selectedDate) => {
-            setShow(Platform.OS === 'ios')
-            if (selectedDate) onChange(selectedDate)
-          }}
-        />
-      )}
+      <Modal visible={visible} transparent animationType="fade">
+        <Pressable style={styles.modalOverlay} onPress={() => setVisible(false)}>
+          <View style={styles.modalContent}>
+            <FlatList
+              data={options}
+              keyExtractor={(item) => item}
+              renderItem={({ item }) => (
+                <Pressable
+                  style={styles.optionRow}
+                  onPress={() => {
+                    onSelect(item)
+                    setVisible(false)
+                  }}
+                >
+                  <Text style={styles.optionText}>{item}</Text>
+                </Pressable>
+              )}
+            />
+          </View>
+        </Pressable>
+      </Modal>
     </View>
   )
 }
 
-// ---------- Session Block ----------
-const SessionSection = ({ icon, title, titleColor, startValue, endValue, onStartChange, onEndChange }) => (
-  <View style={styles.sessionContainer}>
-    <View style={styles.sessionHeaderRow}>
-      <Text style={styles.sessionIcon}>{icon}</Text>
-      <Text style={[styles.sessionTitle, { color: titleColor }]}>{title}</Text>
-    </View>
-    <View style={styles.row}>
-      <TimeField label="Starts at" value={startValue} onChange={onStartChange} />
-      <TimeField label="Ends at" value={endValue} onChange={onEndChange} />
-    </View>
-  </View>
-)
+
+
 
 // ---------- Helper to build a Date at a given hour/minute ----------
 const timeAt = (h, m) => {
@@ -112,7 +65,7 @@ const timeAt = (h, m) => {
 
 // ---------- Main Screen ----------
 const ClinicHoursForm = () => {
-  const [interval, setInterval] = useState('Every 15 minutes')
+  const [interval, setInterval] = useState('Every 10 minutes')
 
   const [morningStart, setMorningStart] = useState(timeAt(7, 0))
   const [morningEnd, setMorningEnd] = useState(timeAt(14, 0))
@@ -130,15 +83,21 @@ const ClinicHoursForm = () => {
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.scrollContent}>
-      <IntervalDropdown
+      <BackButton />
+      <FormDropdown
+        icon={AntDesign}
+        iconName="clock-circle"
+        label="Slot interval"
         value={interval}
-        options={['Every 10 minutes', 'Every 15 minutes', 'Every 20 minutes', 'Every 30 minutes']}
+        options={['Every 10 minutes', 'Every 15 minutes', 'Every 20 minutes', 'Every 30 minutes', 'Every 45 minutes', 'Every 60 minutes']}
         onSelect={setInterval}
+        placeholder="Select"
       />
 
       <SessionSection
-        icon="🌤️"
-        title="MORNING SESSION"
+        icon={Feather}
+        iconName="sunrise"
+        label="MORNING SESSION"
         titleColor="#C9922E"
         startValue={morningStart}
         endValue={morningEnd}
@@ -155,7 +114,6 @@ const ClinicHoursForm = () => {
         onStartChange={setEveningStart}
         onEndChange={setEveningEnd}
       />
-
       <Pressable style={styles.saveButton} onPress={handleSave}>
         <Text style={styles.saveButtonText}>Save hours</Text>
       </Pressable>
