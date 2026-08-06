@@ -31,7 +31,7 @@ const signup = () => {
       title: 'Location',
       placeholder: 'City, State',
       keyboardType: 'default',
-      icon: <AntDesign name="enviromento" size={18} color="#666" />,
+      icon: <AntDesign name="environment" size={18} color="#666" />,
     },
   ];
 

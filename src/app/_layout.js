@@ -21,7 +21,7 @@ import { Animated, StyleSheet } from "react-native";
 
 
 const RootLayout = () => {
-  const [isLogin, setIsLogin] = useState(true); // Replace with your actual login state logic
+  const [isLogin, setIsLogin] = useState(false); // Replace with your actual login state logic
   const [fontsLoaded, fontError] = useFonts({
     Montserrat_400Regular,
     Montserrat_500Medium,
