@@ -5,9 +5,8 @@ export default function DoctorLayout() {
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
       <Stack.Screen name="registration" />
-      <Stack.Screen name="edit" />
-      <Stack.Screen name="[id]" />
       <Stack.Screen name="working-hours" />
+      <Stack.Screen name="edit" />
     </Stack>
   );
 }

@@ -1,8 +1,7 @@
 import { FontAwesome } from '@expo/vector-icons'
 import { useState } from 'react'
-import { Pressable, StyleSheet, View } from 'react-native'
+import { Pressable, StyleSheet, TextInput, View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
-import { TextInput } from 'react-native-web'
 const Search = ({ placeholder }) => {
   const [text, setText] = useState("")
 
@@ -47,12 +46,12 @@ const styles = StyleSheet.create({
   },
   iconsBox: {
     position: 'absolute',
-    height: 50,
-    width: 50,
+    height: moderateScale(50),
+    width: moderateScale(50),
     top: 0,
     left: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
+    borderRadius: moderateScale(10),
   },
 })

@@ -1,5 +1,4 @@
 import { StyleSheet, Switch } from "react-native";
-import { isEnabled } from "react-native/Libraries/Performance/Systrace";
 
 export default function AvailabilitySwitch({
   value,
@@ -15,7 +14,7 @@ export default function AvailabilitySwitch({
         true: "#1c7a6e",
       }}
       ios_backgroundColor="#3e3e3e"
-      thumbColor={isEnabled ? '#fff' : '#000'}
+      thumbColor={value ? '#fff' : '#000'}
     />
   );
 }
