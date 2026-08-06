@@ -1,5 +1,6 @@
 import { Feather, FontAwesome } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
+import { StyleSheet } from 'react-native';
 
 export default function TabLayout() {
   return (
@@ -50,3 +51,8 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+
+})
+
