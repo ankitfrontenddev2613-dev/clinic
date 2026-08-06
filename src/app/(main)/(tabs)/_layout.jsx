@@ -7,6 +7,7 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
       }}
+      screenContentStyle={styles.screenContent}
     >
       <Tabs.Screen
         name="(home)"
