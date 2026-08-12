@@ -78,7 +78,7 @@ const signup = () => {
           <View style={styles.buttonRow}>
             <Button
               title="Sign in"
-              href="/(main)"
+              href="/(main)/home"
               buttonStyle={[{ backgroundColor: 'black', color: "#fff", width: '100%' }, styles.button]}
               textStyle={{ fontSize: 18, color: 'white', width: '100%' }}
 

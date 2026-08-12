@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 1,
-    paddingHorizontal: moderateScale(40),
+    paddingHorizontal: moderateScale(20),
     justifyContent: 'center',
     width: '100%',
     height: '100',
@@ -73,15 +73,18 @@ const styles = StyleSheet.create({
     color: "#12312b",
     fontSize: moderateScale(30),
     letterSpacing: 1,
-    marginBottom: 5
+    marginBottom: 5,
+    fontFamily: 'Montserrat_600SemiBold',
   },
   sendText: {
     color: '#5c6b62',
-    fontSize: moderateScale(13)
+    fontSize: moderateScale(13),
+    fontFamily: 'Sora_400Regular',
   },
   inputContent: {
     marginBottom: moderateScale(15),
     gap: 10,
+    fontFamily: 'Sora_400Regular',
 
   }, inputRow: {
     gap: 5
@@ -90,12 +93,14 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(12),
     color: "#5c6b62",
     letterSpacing: 1,
+    fontFamily: 'Sora_400Regular',
   },
   input: {
     borderRadius: moderateScale(10),
     paddingHorizontal: moderateScale(10),
     backgroundColor: '#fff',
-    textSize: moderateScale(20)
+    textSize: moderateScale(20),
+    fontFamily: 'Sora_400Regular',
   },
   placeholder: {
     color: "red"
@@ -104,7 +109,8 @@ const styles = StyleSheet.create({
     gap: 10,
     marginTop: moderateScale(10),
     marginBottom: moderateScale(10),
-    alignItems: 'center'
+    alignItems: 'center',
+
   }, arrowBtn: {
     backgroundColor: '#fff',
     width: moderateScale(45),

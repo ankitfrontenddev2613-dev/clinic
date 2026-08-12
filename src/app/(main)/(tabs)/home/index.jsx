@@ -1,19 +1,21 @@
 import { StyleSheet } from 'react-native'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { moderateScale } from 'react-native-size-matters'
 import HomeScreen from '../../../../screens/HomeScreen'
 
 
-const Main = () => {
+const HomeRoot = () => {
   return (
-    <SafeAreaProvider style={styles.container}>
-      <HomeScreen homeStyle="{{gap: 10 , height: '70vh'} }">
-      </HomeScreen>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <HomeScreen homeStyle={[{ gap: 10, height: '70vh' }, styles.home]}>
+        </HomeScreen>
+      </SafeAreaView>
     </SafeAreaProvider>
   )
 }
 
-export default Main
+export default HomeRoot
 
 const styles = StyleSheet.create({
   container: {

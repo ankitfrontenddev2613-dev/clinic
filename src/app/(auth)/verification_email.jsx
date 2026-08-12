@@ -26,7 +26,7 @@ const Verification_email = () => {
             backgroundColor: '#ffb020',
             paddingVertical: moderateScale(15),
             width: '100%',
-            marginBottom: 15
+            marginBottom: moderateScale(15),
           }} />
         <View>
 
@@ -60,7 +60,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 40
+    padding: moderateScale(40),
+    width: '100%',
+
   },
   mailIcon: {
     backgroundColor: 'hwb(172.34deg 10.98% 52.16% / 14.9%)',
@@ -81,17 +83,19 @@ const styles = StyleSheet.create({
     color: "#12312b",
     fontSize: moderateScale(30),
     letterSpacing: 1,
-    marginBottom: 5
+    marginBottom: 5,
+    fontFamily: 'Montserrat_600SemiBold',
   },
   sendText: {
     color: '#5c6b62',
-    fontSize: moderateScale(13)
+    fontSize: moderateScale(13),
+    fontFamily: 'Sora_400Regular',
   },
   userEmail: {
     color: '#12312b',
     fontSize: moderateScale(14),
-    fontWeight: 600,
-    fontSize: 15
+    fontSize: 15,
+    fontFamily: 'Sora_600SemiBold',
   },
   message: {
     backgroundColor: 'white',
@@ -99,20 +103,23 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(15),
     borderWidth: 1,
     borderColor: '#E1E6DA',
-    marginBottom: moderateScale(20)
+    marginBottom: moderateScale(20),
+    fontFamily: 'Sora_400Regular',
   },
   messageText: {
     color: '#5c6b62',
-    textSize: moderateScale(13)
+    textSize: moderateScale(13),
+    fontFamily: 'Sora_400Regular',
   },
   contenText: {
     color: '#5c6b62',
-    fontSize: moderateScale(11)
+    fontSize: moderateScale(11),
+    fontFamily: 'Sora_400Regular',
   },
   resendText: {
     color: '#1c7a6e',
     fontSize: moderateScale(14),
-    fontWeight: 600,
-    marginTop: 20
+    marginTop: 20,
+    fontFamily: 'Sora_600SemiBold',
   }
 })

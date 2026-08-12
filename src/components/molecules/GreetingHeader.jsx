@@ -27,7 +27,7 @@ const GreetingHeader = ({ greeting, clinicName }) => {
           onClose={() => setAvailableDoctor(false)}
         />
         <View style={styles.icons}>
-          <Pressable onPress={() => router.push('/Notifications')}>
+          <Pressable onPress={() => router.push('/home/notification')}>
             <FontAwesome name="bell-o" color="#000" size={24} />
           </Pressable>
         </View>

@@ -5,7 +5,7 @@ const HomeRoot = () => {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name='index' />
-      <Stack.Screen name='Notification' />
+      <Stack.Screen name='notifications' />
     </Stack>
   )
 }

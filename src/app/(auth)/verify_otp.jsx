@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   EnterVerify: {
-    marginBottom: 15,
+    marginBottom: moderateScale(15),
     gap: 10
   },
   verifyText: {
@@ -113,20 +113,24 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     lineHeight: moderateScale(35),
     letterSpacing: 1,
-    marginBottom: 5
+    marginBottom: moderateScale(5),
+    fontFamily: 'Montserrat_600SemiBold',
   },
   code: {
     color: '#5c6b62',
-    fontSize: moderateScale(15)
+    fontSize: moderateScale(15),
+    fontFamily: 'Sora_400Regular',
   },
   email: {
     color: '#000',
     fontSize: moderateScale(17),
+    fontFamily: 'Sora_400Regular',
 
   },
   inputContent: {
     marginBottom: moderateScale(15),
     gap: 10,
+    fontFamily: 'Sora_400Regular',
 
   }, inputRow: {
     flexDirection: "row",
@@ -143,6 +147,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderColor: '#e5e7eb',
     borderWidth: 2,
+    fontFamily: 'Sora_400Regular',
   },
   buttonRow: {
     gap: 10,
@@ -163,6 +168,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     fontSize: moderateScale(12),
-    color: '#1c7a6e'
+    color: '#1c7a6e',
+    fontFamily: 'Sora_400Regular',
   }
 })

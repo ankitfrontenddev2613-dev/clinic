@@ -11,7 +11,7 @@ export default function TabLayout() {
       screenContentStyle={styles.screenContent}
     >
       <Tabs.Screen
-        name="(home)"
+        name="home"
         options={{
           title: '',
           tabBarIcon: ({ color, size }) => (

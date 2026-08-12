@@ -16,11 +16,11 @@ const Auth = () => {
   }
   const loading = () => {
     setIsLoading(true);
-    setTimeout(navigateToNextScreen, 30); // Navigate after 2 seconds
+    setTimeout(navigateToNextScreen, 3000); // Navigate after 2 seconds
   }
 
   useEffect(() => { // Simulate a loading state for 2 seconds
-    setTimeout(loading, 10);
+    setTimeout(loading, 2000);
   }, []);
 
   return (
@@ -80,17 +80,15 @@ const styles = StyleSheet.create({
   },
   footer_text: {
     fontSize: moderateScale(20),
-    fontWeight: 'bold',
     color: '#fff',
-    fontFamily: 'Montserrat-Bold',
+    fontFamily: 'Montserrat_600SemiBold',
     letterSpacing: 1,
     paddingBottom: 5,
   },
   footer_text2: {
     fontSize: moderateScale(16),
     color: '#ffffff80',
-    fontFamily: 'Montserrat-Regular',
-    fontWeight: 'semi-bold',
+    fontFamily: 'Sora_400Regular',
     letterSpacing: 1,
   }
 })

@@ -39,7 +39,7 @@ const Login = () => {
           <View style={styles.buttonRow}>
             <Button
               title="Sign in"
-              href="/(main)"
+              href="/(main)/home"
               buttonStyle={[{ backgroundColor: 'black', color: "#fff", width: '100%' }, styles.button]}
               textStyle={{ fontSize: 18, color: 'white', width: '100%' }}
 
@@ -48,7 +48,7 @@ const Login = () => {
             <Text style={{ fontSize: 15, color: "#1c7a6e", marginBottom: 10 }}>or</Text>
             <Button
               title="New clinic? Sign up"
-              href="/signup"
+              href="/choose-plan"
               buttonStyle={{ backgroundColor: 'white', color: "black", width: '100%' }}
               textStyle={{ fontSize: 18 }}
             />
@@ -88,20 +88,24 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(11),
     color: "#1c7a6e",
     textAlign: 'left',
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    fontFamily: 'Sora_400Regular',
   },
   welcomeText: {
     color: "#12312b",
     fontSize: moderateScale(30),
-    letterSpacing: 1
+    letterSpacing: 1,
+    fontFamily: 'Montserrat_600SemiBold',
   },
   SingText: {
     color: '#5c6b62',
-    fontSize: moderateScale(16)
+    fontSize: moderateScale(16),
+    fontFamily: 'Sora_400Regular',
   },
   inputContent: {
     marginBottom: moderateScale(15),
     gap: 10,
+    fontFamily: 'Sora_400Regular',
 
   }, inputRow: {
     gap: 5
@@ -110,6 +114,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(12),
     color: "#5c6b62",
     letterSpacing: 1,
+    fontFamily: 'Sora_400Regular',
   },
   input: {
     borderRadius: moderateScale(10),
@@ -117,7 +122,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: moderateScale(10),
     backgroundColor: '#fff',
     fontSize: moderateScale(16),
-    height: moderateScale(50)
+    height: moderateScale(50),
+    fontFamily: 'Sora_400Regular',
   },
   placeholder: {
     color: "red",
@@ -132,6 +138,6 @@ const styles = StyleSheet.create({
   forgotText: {
     fontSize: moderateScale(15),
     color: "#1c7a6e",
-    fontWeight: 600
+    fontFamily: 'Sora_600SemiBold',
   }
 })

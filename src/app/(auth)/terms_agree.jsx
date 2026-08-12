@@ -56,13 +56,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: moderateScale(24),
-    fontWeight: 'semi-bold',
-    color: '#fff'
+    color: '#fff',
+    fontFamily: 'Montserrat_600SemiBold',
   },
   description: {
     fontSize: moderateScale(16),
     color: '#fff',
     textAlign: 'center',
+    fontFamily: 'Sora_400Regular',
   },
   footer: {
     alignItems: 'center',

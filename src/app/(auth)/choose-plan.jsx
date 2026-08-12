@@ -89,7 +89,8 @@ const ChoosePlan = ({ price }) => {
               styles.continueButton,
               !selectedPlan && { opacity: 0.5 },
             ]}
-            disabled={!selectedPlan}
+            // disabled={!selectedPlan}
+            onPress={() => router.push('/signup')}
           >
             <Text style={styles.continueText}>Continue</Text>
           </Pressable>
