@@ -1,17 +1,14 @@
 import { StyleSheet } from 'react-native'
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { moderateScale } from 'react-native-size-matters'
+import ScreenContainer from '../../../../components/molecules/ScreenContainer'
 import HomeScreen from '../../../../screens/HomeScreen'
 
 
 const HomeRoot = () => {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-        <HomeScreen homeStyle={[{ gap: 10, height: '70vh' }, styles.home]}>
-        </HomeScreen>
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <ScreenContainer containerStyle={styles.container} childContainerStyle={styles.home}>
+      <HomeScreen homeStyle={styles.home} />
+    </ScreenContainer>
   )
 }
 
@@ -20,12 +17,12 @@ export default HomeRoot
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f1f4ee',
-    paddingHorizontal: moderateScale(20),
+    paddingHorizontal: moderateScale(10),
     paddingTop: moderateScale(10),
-    height: '50Vh'
   },
   home: {
-    gap: 10
+    gap: 10,
+    flex: 1,
   },
 
 })

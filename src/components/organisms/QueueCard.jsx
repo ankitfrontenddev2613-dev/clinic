@@ -2,11 +2,11 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { StyleSheet, Text, View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 
-const QueueCard = ({ token, nextPatient, appointments, waitingTime }) => {
+const QueueCard = ({ LinearStyle, token, nextPatient, appointments, waitingTime, linearGradientStyles }) => {
   return (
-    <LinearGradient colors={['#1B4038', '#0D211D']}
+    <LinearGradient style={[LinearStyle]} colors={['#1B4038', '#0D211D']}
       start={{ x: 0.2, y: 0 }}
-      end={{ x: 0.8, y: 1 }} style={styles.container}>
+      end={{ x: 0.8, y: 1 }} style={[styles.container, linearGradientStyles]}>
       <View style={styles.cardHeader}>
         <View style={styles.columnOne}>
           <View style={styles.rowText}>
@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     lineHeight: moderateScale(40),
     fontFamily: 'Montserrat_700Bold',
     letterSpacing: 3,
-    fontWeight: 'bold',
     color: '#FFB020',
     // Text Shadow Properties
     // textShadowColor: 'rgba(255, 176, 32, 0.55)', // Blue glow

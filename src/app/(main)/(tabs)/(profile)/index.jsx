@@ -14,8 +14,8 @@ const Profile = () => {
       <HeaderTitle Title='Clinic profile' SubTitle='Account' />
       <ClinicAvatar />
       <ClinicInfoCard title="HealthPlus Clinic" subTitle="Clinic name" />
-      <MenuItem title="Subscription" onPress={() => router.push('/subscription')} />
-      <MenuItem title="Settings" onPress={() => router.push('/settings')} />
+      <MenuItem title="Subscription" iconSize={18} onPress={() => router.push('/subscription')} />
+      <MenuItem title="Settings" iconSize={18} onPress={() => router.push('/settings')} />
       <Button href="/(auth)" title="Sign out" buttonStyle={[{ backgroundColor: '#e15b441a', color: 'rgb(225 91 68 )' }, styles.button]} />
     </ScreenContainer>
   )

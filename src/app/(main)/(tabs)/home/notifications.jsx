@@ -1,35 +1,79 @@
-import { MaterialIcons } from '@expo/vector-icons'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
-import BackButton from '../../../../components/atoms/BackButton'
+import { useState } from 'react'
+import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native'
+import { moderateScale } from 'react-native-size-matters'
 
+import BackButton from '../../../../components/atoms/BackButton'
 import HeaderTitle from '../../../../components/molecules/HeaderTitle'
+import NotificationCard from '../../../../components/molecules/NotificationCard'
 import ScreenContainer from '../../../../components/molecules/ScreenContainer'
+import { notificationsData as notification } from '../../../../data/notificationsData'
 
 const Notifications = () => {
+  const [notifications, setNotifications] = useState(notification)
+
+  const markAllRead = () => {
+    setNotifications(prev =>
+      prev.map(item => ({
+        ...item,
+        read: true,
+      }))
+    )
+  }
+
   return (
-    <ScreenContainer childContainerStyle={{ flex: 1 }}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+    <ScreenContainer childContainerStyle={styles.container}>
+
+      {/* Header */}
+      <View style={styles.header}>
         <BackButton />
-        <Pressable onPress={() => console.log('notification')}>
-          <Text> Mark all read</Text>
+
+        <Pressable onPress={markAllRead}>
+          <Text style={styles.markRead}>
+            Mark all read
+          </Text>
         </Pressable>
       </View>
-      <HeaderTitle SubTitle="Update" Title="Notifications" />
-      <Text>Today</Text>
-      <View>
-        <View style={styles.flexRow}>
 
-          <View style={styles.iconRow}>
-            <MaterialIcons name="error-outline" size={25} color={'#000'} />
+      {/* Title */}
+      <HeaderTitle
+        SubTitle="Update"
+        Title="Notifications"
+      />
+
+      <Text style={styles.dayText}>
+        Today
+      </Text>
+
+      {/* Notifications */}
+      <FlatList
+        data={notifications}
+        keyExtractor={item => item.id.toString()}
+        renderItem={({ item }) => (
+          <NotificationCard
+            notificationTitle={item.title}
+            notificationContent={item.message}
+            notificationTime={item.time}
+            read={item.read}
+          />
+        )}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.listContent}
+        ItemSeparatorComponent={() => (
+          <View style={styles.separator} />
+        )}
+        ListEmptyComponent={
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyTitle}>
+              No notifications
+            </Text>
+
+            <Text style={styles.emptyText}>
+              You're all caught up!
+            </Text>
           </View>
-          <View style={styles.contentRow}>
-            <Text style={styles.title}>Queue running behind</Text>
-            <Text style={styles.content}>OPD Counter 1 is 15 min behind schedule. 6 patients still waiting.</Text>
-            <Text style={styles.timer}>2 min ago</Text>
-          </View>
-          <View style={styles.dotsColor}></View>
-        </View>
-      </View>
+        }
+      />
+
     </ScreenContainer>
   )
 }
@@ -37,45 +81,53 @@ const Notifications = () => {
 export default Notifications
 
 const styles = StyleSheet.create({
-  iconRow: {
-    backgroundColor: '#E15B441A',
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 50,
-    height: 50,
+  container: {
     flex: 1,
-  },
-  contentRow: {
-    flexDirection: 'column',
-    width: '100%',
-    flex: 5,
-  },
-  flexRow: {
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
-    gap: 20
-  },
-  title: {
-    color: '#12312B',
-    fontSize: 15
-  },
-  content: {
-    fontSize: 12,
-    color: '#5c6b62',
-  },
-  dotsColor: {
-    backgroundColor: '#ffb020',
-    width: 10,
-    height: 10,
-    borderRadius: 10,
-    flex: 1,
-    position: 'absolute',
-    top: 20,
-    right: 20,
   },
 
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
+  markRead: {
+    fontSize: moderateScale(12),
+    fontFamily: 'Sora_500Medium',
+    color: '#2F6B4F',
+  },
+
+  dayText: {
+    fontSize: moderateScale(16),
+    fontFamily: 'Sora_600SemiBold',
+    color: '#5C6B62',
+    paddingVertical: moderateScale(10),
+  },
+
+  listContent: {
+    paddingBottom: moderateScale(100),
+  },
+
+  separator: {
+    height: moderateScale(10),
+  },
+
+  emptyContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: moderateScale(60),
+  },
+
+  emptyTitle: {
+    fontSize: moderateScale(16),
+    fontFamily: 'Sora_600SemiBold',
+    color: '#12312B',
+  },
+
+  emptyText: {
+    marginTop: moderateScale(6),
+    fontSize: moderateScale(12),
+    fontFamily: 'Sora_400Regular',
+    color: '#8A9490',
+  },
 })

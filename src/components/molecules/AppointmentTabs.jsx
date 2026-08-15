@@ -6,7 +6,7 @@ import Complete from './homeTabs/Complete';
 import Queue from './homeTabs/Queue';
 
 
-const AppointmentTabs = () => {
+const AppointmentTabs = ({ tabStyle }) => {
   const [currentPage, setCurrentPage] = useState("queue");
   const tabs = ['queue', 'complete', 'cancelled']
   const ActivePage = () => {
@@ -23,7 +23,7 @@ const AppointmentTabs = () => {
   }
   return (
 
-    <View>
+    <View style={[{ flex: 1 }, tabStyle]}>
       <Text style={styles.title}>Today's appointments</Text>
       <View style={styles.topBarContainer}>
         {tabs.map((item) => (

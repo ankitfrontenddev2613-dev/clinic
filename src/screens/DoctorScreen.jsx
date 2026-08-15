@@ -48,8 +48,7 @@ const DoctorScreen = () => {
       <FlatList
         data={filteredDoctors}
         keyExtractor={(item) => item.id.toString()}
-        style={styles.flatList}
-        contentContainerStyle={{ gap: 20 }}
+        contentContainerStyle={[styles.flatList]}
         renderItem={({ item }) => (
           <DoctorCard
             doctor={item}
@@ -65,7 +64,7 @@ const DoctorScreen = () => {
         )}
         showsVerticalScrollIndicator={false}
       />
-      <CircleIconButton onPress={() => router.push('/registration')} />
+      <CircleIconButton plusStyle={styles.plusIcon} onPress={() => router.push('/registration')} />
     </ScreenContainer>
   )
 }
@@ -75,12 +74,26 @@ export default DoctorScreen
 const styles = StyleSheet.create({
   container: {
     borderRadius: 10,
-    position: 'relative'
+    position: 'relative',
+    flex: 1,
+  },
+  plusIcon: {
+    position: 'absolute',
+    width: 50,
+    height: 50,
+    right: 20,
+    top: '100%',
+    backgroundColor: 'rgb(255 176 32 )',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 100
   },
   cardColumn: {
     gap: 20,
     position: 'relative',
-  }, flatList: {
-    gap: 10
+  },
+  flatList: {
+    gap: 20,
+    paddingBottom: 250,
   }
 })

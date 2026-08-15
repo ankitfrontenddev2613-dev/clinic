@@ -16,8 +16,12 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 15,
     fontFamily: 'Sora_500Medium'
-  }, switchBox: {
+  },
+  switchBox: {
     backgroundColor: '#fff',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#E1E6DA',
     padding: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',

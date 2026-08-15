@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 15,
     backgroundColor: '#fff',
-    borderRadius: 15
+    borderRadius: 15,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#E1E6DA',
   }
 })

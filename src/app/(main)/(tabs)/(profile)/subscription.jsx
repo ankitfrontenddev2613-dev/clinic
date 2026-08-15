@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native'
+import { moderateScale } from 'react-native-size-matters'
 import Button from '../../../../components/atoms/Button'
 import HeaderTitle from '../../../../components/molecules/HeaderTitle'
 import ScreenContainer from '../../../../components/molecules/ScreenContainer'
@@ -29,7 +30,7 @@ const Subscription = () => {
           ))
         }
       </View>
-      <Button href="" title="Upgrade" buttonStyle={{ background: 'rgb(255 176 32 )' }} />
+      <Button href="" title="Upgrade" buttonStyle={{ background: 'rgb(255 176 32 )', marginTop: moderateScale(15) }} />
     </ScreenContainer>
   )
 }

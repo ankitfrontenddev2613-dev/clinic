@@ -55,7 +55,8 @@ const Complete = () => {
     setSelectedPatient(null)
   }
   return (
-    <View style={{ flex: 1 }}>
+    <View>
+
       <FlatList
         showsVerticalScrollIndicator={false}
         data={data}
@@ -78,14 +79,15 @@ const Complete = () => {
                 queueNumber={item?.seen}
               />
             </Pressable>
-            <PatientDetailsModal
-              patient={selectedPatient}
-              visible={!!selectedPatient}
-              onClose={closePatientDetails}
-            />
+
           </View>
         )
         }
+      />
+      <PatientDetailsModal
+        patient={selectedPatient}
+        visible={!!selectedPatient}
+        onClose={closePatientDetails}
       />
     </View>
   )
@@ -104,6 +106,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     gap: 20,
+    paddingBottom: 170,
   },
   divider: {
     width: '100%',

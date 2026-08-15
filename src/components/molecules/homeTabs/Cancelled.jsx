@@ -55,9 +55,9 @@ const Cancelled = () => {
     setSelectedPatient(null)
   }
   return (
-    <View style={{ flex: 1 }}>
+    <View>
       <FlatList
-        showsVerticalScrollIndicator={true}
+        showsVerticalScrollIndicator={false}
         data={data}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.listContainer}
@@ -78,15 +78,16 @@ const Cancelled = () => {
                 queueNumber={item?.cancelled}
               />
             </Pressable>
-            {/* Patient Details Modal */}
-            <PatientDetailsModal
-              patient={selectedPatient}
-              visible={!!selectedPatient}
-              onClose={closePatientDetails}
-            />
+
           </View>
         )
         }
+      />
+      {/* Patient Details Modal */}
+      <PatientDetailsModal
+        patient={selectedPatient}
+        visible={!!selectedPatient}
+        onClose={closePatientDetails}
       />
     </View>
   )
@@ -105,6 +106,8 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     gap: 20,
+    width: '100%',
+    paddingBottom: 170,
   },
   divider: {
     width: '100%',

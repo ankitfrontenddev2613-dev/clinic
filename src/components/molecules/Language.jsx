@@ -17,12 +17,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 20,
     backgroundColor: '#fff',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#E1E6DA',
     borderRadius: 15
-  }, text: {
+  },
+  text: {
     fontSize: 15,
     fontFamily: 'Sora_500Medium',
     color: '#12312B'
-  }, languText: {
+  },
+  languText: {
     color: '#5c6b62',
     fontFamily: 'Monstrrat_400Medium'
   }

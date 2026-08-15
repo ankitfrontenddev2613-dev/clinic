@@ -15,6 +15,9 @@ export default ClinicInfoCard
 const styles = StyleSheet.create({
   clinicBox: {
     backgroundColor: '#fff',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#E1E6DA',
     borderRadius: 15,
     flexDirection: 'column',
     padding: moderateScale(20),

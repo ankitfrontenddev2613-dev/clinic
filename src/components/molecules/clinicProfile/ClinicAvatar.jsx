@@ -16,7 +16,6 @@ export default ClinicAvatar
 const styles = StyleSheet.create({
   iconBox: {
     width: '100%',
-    flex: 1,
     alignItems: 'center',
   },
   icons: {
@@ -24,6 +23,9 @@ const styles = StyleSheet.create({
     height: moderateScale(60),
     borderRadius: '100%',
     backgroundColor: '#fff',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#E1E6DA',
     alignItems: 'center',
     justifyContent: 'center',
   }
