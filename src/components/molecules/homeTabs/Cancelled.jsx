@@ -106,8 +106,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     gap: 20,
-    width: '100%',
-    paddingBottom: 170,
   },
   divider: {
     width: '100%',
