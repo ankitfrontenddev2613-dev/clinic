@@ -5,11 +5,11 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 import DoctorAvailableModal from '../modals/DoctorAvailableModal'
 
-const GreetingHeader = ({ greeting, clinicName }) => {
+const GreetingHeader = ({ greeting, clinicName, headerStyle }) => {
   const router = useRouter()
   const [availableDoctor, setAvailableDoctor] = useState(false);
   return (
-    <View style={styles.headerConteiner}>
+    <View style={[styles.headerConteiner, headerStyle]}>
       <View>
         <Text style={styles.greeting}>{greeting}</Text>
         <Text style={styles.clinicName}>{clinicName}</Text>

@@ -49,12 +49,13 @@ const Queue = () => {
     setSelectedPatient(null)
   }
   return (
-    <View style={{ flex: 1 }}>
+    <View>
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.listContainer}
-        renderItem={({ item, index }) => (
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => (
           <View style={styles.container}>
             <Pressable
               onPress={() => openPatientDetails(item)}
@@ -73,14 +74,15 @@ const Queue = () => {
             <View style={styles.divider} />
             <ActionButtons />
             {/* Patient Details Modal */}
-            <PatientDetailsModal
-              patient={selectedPatient}
-              visible={!!selectedPatient}
-              onClose={closePatientDetails}
-            />
+
           </View>
         )
         }
+      />
+      <PatientDetailsModal
+        patient={selectedPatient}
+        visible={!!selectedPatient}
+        onClose={closePatientDetails}
       />
     </View>
 
