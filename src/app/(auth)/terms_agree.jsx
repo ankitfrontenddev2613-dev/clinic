@@ -1,5 +1,6 @@
 import Button from '@/components/atoms/Button'
 import imagePath from '@/constants/imagePath'
+import { router } from 'expo-router'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { moderateScale } from 'react-native-size-matters'
@@ -16,7 +17,7 @@ const terms_agree = () => {
         <View style={styles.footer}>
           <Button
             title="Sign in to your clinic"
-            href="/login"
+            onPress={() => router.push('/login')}
             buttonStyle={[{ backgroundColor: 'white', color: "black", width: "100%" }]}
             textStyle={{ fontSize: 18 }}
           />

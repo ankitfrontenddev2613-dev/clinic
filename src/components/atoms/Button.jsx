@@ -1,14 +1,13 @@
-import { Link } from 'expo-router'
-import { StyleSheet, Text } from 'react-native'
+import { Pressable, StyleSheet, Text } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 
-const Button = ({ title, href, buttonStyle, textStyle, children }) => {
+const Button = ({ title, href, buttonStyle, textStyle, children, onPress, disabled }) => {
   return (
     <>
-      <Link href={href} style={[styles.button, buttonStyle]}>
+      <Pressable onPress={onPress} disabled={disabled} style={[styles.button, buttonStyle]}>
         {children}
         <Text style={[styles.text, textStyle]}>{title}</Text>
-      </Link>
+      </Pressable>
     </>
   )
 }
@@ -25,7 +24,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'black',
+    width: '100%',
+    textAlign: 'center',
     fontFamily: 'Montserrat_500Medium',
-    fontWeight: 'semi-bold',
   }
 })

@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   subTitle: {
     letterSpacing: 2,
     textTransform: 'uppercase',
-    fontFamily: "Sora_500Medium",
+    fontFamily: "Sora_600SemiBold",
     fontSize: moderateScale(13),
     color: '#000'
   },

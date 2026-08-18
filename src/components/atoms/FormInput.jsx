@@ -2,17 +2,19 @@ import { StyleSheet, TextInput, View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 import FieldLabel from './FieldLabel'
 
-const FormInput = ({ icon, iconName, label, value, onChangeText, placeholder, keyboardType }) => {
+const FormInput = ({ icon, iconName, label, value, onChangeText, placeholder, keyboardType, autoCapitalize, secureTextEntry }) => {
   return (
     <View style={styles.fieldContainer}>
       <FieldLabel icon={icon} iconName={iconName} label={label} />
       <View style={styles.inputBox}>
         <TextInput
+          autoCapitalize={autoCapitalize}
           style={styles.inputText}
           value={value}
           onChangeText={onChangeText}
           placeholder={placeholder}
           placeholderTextColor="#B7BDB7"
+          secureTextEntry={secureTextEntry}
           keyboardType={keyboardType || 'default'}
         />
       </View>

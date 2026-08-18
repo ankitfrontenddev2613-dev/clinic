@@ -1,3 +1,5 @@
+import Button from '@/components/atoms/Button'
+import HeaderTitle from '@/components/molecules/HeaderTitle'
 import { Feather } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import { useState } from 'react'
@@ -38,8 +40,7 @@ const ChoosePlan = ({ price }) => {
             <Feather name="arrow-left" size={28} color="black" />
           </Pressable>
           <View>
-            <Text style={styles.stepText}>Step 1 of 2</Text>
-            <Text style={styles.chooseText}>Choose your plan</Text>
+            <HeaderTitle SubTitle="Step 1 of 2" Title="Choose your plan" />
             <Text style={styles.pickText}>Pick the plan that fits your clinic. You can upgrade anytime.</Text>
           </View>
           <View style={styles.planContainer}>
@@ -83,17 +84,14 @@ const ChoosePlan = ({ price }) => {
               </Pressable>
             ))}
           </View>
-
-          <Pressable
-            style={[
-              styles.continueButton,
-              !selectedPlan && { opacity: 0.5 },
-            ]}
-            // disabled={!selectedPlan}
+          <Button
+            title="Continue"
+            buttonStyle={[styles.continueButton,
+            !selectedPlan && { opacity: 0.5 },]}
+            textStyle={styles.continueText}
+            disabled={!selectedPlan}
             onPress={() => router.push('/signup')}
-          >
-            <Text style={styles.continueText}>Continue</Text>
-          </Pressable>
+          />
         </View>
       </SafeAreaView>
     </SafeAreaProvider>

@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { moderateScale } from 'react-native-size-matters'
+import { price } from './choose-plan'
 
 const signup = () => {
   const router = useRouter()
@@ -52,7 +53,7 @@ const signup = () => {
           <View style={styles.textContainer}>
             <Text style={styles.stepText}>Step 1 of 2</Text>
             <Text style={styles.chooseText}>Tell us about your clinic</Text>
-            <Text style={styles.pickText}>Starter plan · ₹899/mo</Text>
+            <Text style={styles.pickText}>Starter plan · ₹{price}/mo</Text>
           </View>
           <View style={styles.inputContent}>
             {inputFields.map((item, index) => (

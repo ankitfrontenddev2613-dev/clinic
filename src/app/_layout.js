@@ -5,19 +5,13 @@ import {
   Montserrat_700Bold,
   useFonts,
 } from "@expo-google-fonts/montserrat";
-import {
-  Poppins_100Thin,
-  Poppins_300Light,
-  Poppins_400Regular,
-  Poppins_500Medium,
-  Poppins_600SemiBold,
-  Poppins_700Bold,
-} from "@expo-google-fonts/poppins";
 import { Sora_100Thin, Sora_200ExtraLight, Sora_300Light, Sora_400Regular, Sora_500Medium, Sora_600SemiBold, Sora_700Bold, Sora_800ExtraBold } from "@expo-google-fonts/sora";
 import { Redirect, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useRef, useState } from "react";
 import { Animated, StyleSheet } from "react-native";
+import { Provider } from 'react-redux';
+import { store } from "../redux/store";
 
 
 const RootLayout = () => {
@@ -27,12 +21,6 @@ const RootLayout = () => {
     Montserrat_500Medium,
     Montserrat_600SemiBold,
     Montserrat_700Bold,
-    Poppins_100Thin,
-    Poppins_300Light,
-    Poppins_400Regular,
-    Poppins_500Medium,
-    Poppins_600SemiBold,
-    Poppins_700Bold,
     Sora_100Thin,
     Sora_200ExtraLight,
     Sora_300Light,
@@ -72,8 +60,10 @@ const RootLayout = () => {
   }
   return (
     <>
-      <Stack screenOptions={{ headerShown: false }} />
-      {isLogin ? <Redirect href={"/(main)"} /> : <Redirect href={"/(auth)"} />}
+      <Provider store={store}>
+        <Stack screenOptions={{ headerShown: false }} />
+        {isLogin ? <Redirect href={"/(main)"} /> : <Redirect href={"/(auth)"} />}
+      </Provider>
     </>
   );
 }
