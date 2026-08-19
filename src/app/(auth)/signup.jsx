@@ -58,7 +58,7 @@ const signup = () => {
       <View style={styles.body}>
         <BackButton />
         <View style={styles.textContainer}>
-          <HeaderTitle SubTitle="Step 1 of 2" Title="Tell us about your clinic" />
+          <HeaderTitle SubTitle="Step 1 of 2" Title="Tell us about your clinic" headingStyle={{ marginBottom: 0 }} />
           <Text style={styles.pickText}>Starter plan <Text style={styles.boldText}>{plan} ·₹{price}/mo</Text></Text>
         </View>
         <View style={styles.inputContent}>
