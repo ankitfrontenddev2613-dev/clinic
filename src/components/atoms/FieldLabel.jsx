@@ -1,15 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
 
-const FieldLabel = ({ icon: Icon, iconName, label, placeholder }) => {
+const FieldLabel = ({ icon: Icon, iconName, label }) => {
   return (
     <View style={styles.inputRow}>
       <View style={styles.labelRow}>
         {Icon && (<Icon name={iconName} size={moderateScale(15)} color="#5B6B5B" />)}
         <Text style={styles.labelText}>{label}</Text>
       </View>
-      {/* <TextInput placeholder={placeholder} keyboardType="email-address"
-        autoCapitalize="none" style={styles.input} placeholderTextColor={'#b6a3af'} /> */}
     </View>
   )
 }

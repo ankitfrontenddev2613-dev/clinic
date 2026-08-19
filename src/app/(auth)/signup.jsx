@@ -1,12 +1,13 @@
-import Button from '@/components/atoms/Button'
-import { AntDesign, Feather } from '@expo/vector-icons'
-import { useRouter } from 'expo-router'
-import { useState } from 'react'
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
-import { moderateScale } from 'react-native-size-matters'
-import { price } from './choose-plan'
-
+import BackButton from '@/components/atoms/BackButton';
+import Button from '@/components/atoms/Button';
+import HeaderTitle from '@/components/molecules/HeaderTitle';
+import ScreenContainer from '@/components/molecules/ScreenContainer';
+import { AntDesign } from '@expo/vector-icons';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
+import { default as FormInput } from '../../components/atoms/FormInput';
 const signup = () => {
   const router = useRouter()
   const inputFields = [
@@ -14,24 +15,32 @@ const signup = () => {
       title: 'Clinic name',
       placeholder: 'HealthPlus Clinic',
       keyboardType: 'default',
+      iconTag: AntDesign,
+      iconName: 'home',
       icon: <AntDesign name="home" size={18} color="#666" />,
     },
     {
       title: 'Email',
       placeholder: 'clinic@example.com',
       keyboardType: 'email-address',
+      iconTag: AntDesign,
+      iconName: 'mail',
       icon: <AntDesign name="mail" size={18} color="#666" />,
     },
     {
       title: 'Phone Number',
       placeholder: '+91 85586 58542',
       keyboardType: 'phone-pad',
+      iconTag: AntDesign,
+      iconName: 'phone',
       icon: <AntDesign name="phone" size={18} color="#666" />,
     },
     {
       title: 'Location',
       placeholder: 'City, State',
       keyboardType: 'default',
+      iconTag: AntDesign,
+      iconName: 'environment',
       icon: <AntDesign name="environment" size={18} color="#666" />,
     },
   ];
@@ -43,55 +52,45 @@ const signup = () => {
     values[index] = text;
     setInput(values);
   };
+  const { plan, price } = useLocalSearchParams()
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.body}>
-          <Pressable onPress={() => router.back()} style={styles.arrowBtn}>
-            <Feather name="arrow-left" size={28} color="black" />
-          </Pressable>
-          <View style={styles.textContainer}>
-            <Text style={styles.stepText}>Step 1 of 2</Text>
-            <Text style={styles.chooseText}>Tell us about your clinic</Text>
-            <Text style={styles.pickText}>Starter plan · ₹{price}/mo</Text>
-          </View>
-          <View style={styles.inputContent}>
-            {inputFields.map((item, index) => (
-              <View style={styles.inputRow} key={index}>
-                <View style={styles.lableRow}>
-                  {item.icon}
-                  <Text style={styles.inputText}>{item.title}</Text>
-                </View>
-
-                <View style={styles.inputContainer}>
-                  <TextInput
-                    value={input[index]}
-                    onChangeText={(text) => handleChange(text, index)}
-                    placeholder={item.placeholder}
-                    keyboardType={item.keyboardType}
-                    autoCapitalize="none"
-                    style={styles.input}
-                  />
-                </View>
-              </View>
-            ))}
-          </View>
-          <View style={styles.buttonRow}>
-            <Button
-              title="Sign in"
-              href="/(main)/home"
-              buttonStyle={[{ backgroundColor: 'black', color: "#fff", width: '100%' }, styles.button]}
-              textStyle={{ fontSize: 18, color: 'white', width: '100%' }}
-
-            />
-            <Text style={styles.forgotText}>By continuing you agree to Nabz's Terms of Service and Privacy Policy.</Text>
-          </View>
-
+    <ScreenContainer childContainerStyle={styles.container}>
+      <View style={styles.body}>
+        <BackButton />
+        <View style={styles.textContainer}>
+          <HeaderTitle SubTitle="Step 1 of 2" Title="Tell us about your clinic" />
+          <Text style={styles.pickText}>Starter plan <Text style={styles.boldText}>{plan} ·₹{price}/mo</Text></Text>
         </View>
-      </SafeAreaView>
-    </SafeAreaProvider>
+        <View style={styles.inputContent}>
+          {inputFields.map((item, index) => (
+            <View style={styles.inputRow} key={index}>
+              <FormInput
+                value={input[index]}
+                onChangeText={(text) => handleChange(text, input)}
+                placeholder={item.placeholder}
+                keyboardType={item.keyboardType}
+                inputText={styles.input}
+                icon={item.iconTag}
+                iconName={item.iconName}
+                label={item.title}
+              />
+            </View>
+          ))}
+        </View>
+        <View style={styles.buttonRow}>
+          <Button
+            title="Sign in"
+            href="/(main)/home"
+            buttonStyle={[{ backgroundColor: 'black', color: "#fff", width: '100%' }, styles.button]}
+            textStyle={{ fontSize: 18, color: 'white', width: '100%' }}
+
+          />
+          <Text style={styles.forgotText}>By continuing you agree to Nabz's Terms of Service and Privacy Policy.</Text>
+        </View>
+
+      </View>
+    </ScreenContainer>
   )
-  alignItems: 'center'
 }
 
 export default signup
@@ -100,27 +99,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
+  boldText: {
+    fontFamily: 'Sora_500Medium',
+    color: '#000'
+  },
   body: {
     flex: 1,
     paddingTop: moderateScale(20),
     alignItems: 'start',
-    paddingHorizontal: moderateScale(20),
     width: '100%'
   },
   textContainer: {
     width: '100%',
-    gap: 10,
+    gap: moderateScale(10),
     marginBottom: moderateScale(10)
-  },
-  stepText: {
-    fontSize: moderateScale(12),
-    letterSpacing: moderateScale(1),
-    textTransform: 'uppercase',
-    color: '#5c6b62',
-  },
-  chooseText: {
-    fontSize: moderateScale(25),
-    fontWeight: '600'
   },
   pickText: {
     fontSize: moderateScale(15),
@@ -143,11 +135,11 @@ const styles = StyleSheet.create({
   },
   inputContent: {
     marginBottom: moderateScale(15),
-    gap: 10,
+    gap: moderateScale(10),
     width: '100%'
 
   }, inputRow: {
-    gap: 5
+    gap: moderateScale(10)
   },
   inputText: {
     fontSize: moderateScale(12),
@@ -164,7 +156,7 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     color: "red",
-    fontSize: 12,
+    fontSize: moderateScale(12),
   },
   buttonRow: {
     gap: 10,
@@ -176,6 +168,6 @@ const styles = StyleSheet.create({
   forgotText: {
     fontSize: moderateScale(15),
     color: "#1c7a6e",
-    fontWeight: 600
+    fontFamily: 'Sora_400Regular'
   }
 })

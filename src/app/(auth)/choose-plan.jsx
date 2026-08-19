@@ -14,14 +14,14 @@ const ChoosePlan = ({ price }) => {
       title: "Starter",
       price: 899,
       subtitle: "Up to 1 doctor",
-      popular: true,
+      popular: false,
     },
     {
       id: "2",
       title: "Growth",
       price: 1299,
       subtitle: "Up to 3 doctors",
-      popular: false,
+      popular: true,
     },
     {
       id: "3",
@@ -32,6 +32,18 @@ const ChoosePlan = ({ price }) => {
     },
   ];
   const [selectedPlan, setSelectedPlan] = useState(null);
+  const handlePrice = () => {
+    const selected = plans.find(
+      plan => plan.id === selectedPlan
+    )
+    router.push({
+      pathname: '/signup',
+      params: {
+        plan: selected.title,
+        price: selected.price.toString(),
+      }
+    })
+  }
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
@@ -87,16 +99,15 @@ const ChoosePlan = ({ price }) => {
           <Button
             title="Continue"
             buttonStyle={[styles.continueButton,
-            !selectedPlan && { opacity: 0.5 },]}
+            !selectedPlan && { opacity: selectedPlan ? 1 : 0.5 },]}
             textStyle={styles.continueText}
             disabled={!selectedPlan}
-            onPress={() => router.push('/signup')}
+            onPress={handlePrice}
           />
         </View>
       </SafeAreaView>
     </SafeAreaProvider>
   )
-  alignItems: 'center'
 }
 
 export default ChoosePlan
@@ -124,8 +135,9 @@ const styles = StyleSheet.create({
   },
   pickText: {
     fontSize: moderateScale(15),
-    fontWeight: '500',
     color: '#5c6b62',
+    fontFamily: 'Sora_400Regular',
+    marginBottom: moderateScale(5)
   },
   arrowBtn: {
     backgroundColor: '#fff',
@@ -146,7 +158,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: moderateScale(18),
     padding: 20,
-    wdith: '100%',
+    width: '100%',
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -165,7 +177,7 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 22,
-    fontWeight: "600",
+    fontFamily: 'Montserrat_500Medium',
     color: "#0F172A",
   },
 
@@ -173,6 +185,7 @@ const styles = StyleSheet.create({
     marginTop: 6,
     color: "#64748B",
     fontSize: 15,
+    fontFamily: 'Sora_400Regular',
   },
 
   right: {
@@ -183,13 +196,14 @@ const styles = StyleSheet.create({
 
   price: {
     fontSize: 28,
-    fontWeight: "700",
     color: "#0F172A",
+    fontFamily: 'Montserrat_600SemiBold'
   },
 
   month: {
     fontSize: 15,
     color: "#64748B",
+    fontFamily: 'Sora_400Regular'
   },
 
   radio: {
@@ -225,26 +239,28 @@ const styles = StyleSheet.create({
 
   badgeText: {
     fontSize: 11,
-    fontWeight: "600",
     color: "#000",
+    fontFamily: 'Sora_400Regular'
   },
 
   continueButton: {
     marginTop: 40,
-    backgroundColor: "#D9E0D1",
+    backgroundColor: "#FDBA2D",
     height: 58,
     borderRadius: 30,
     justifyContent: "center",
     alignItems: "center",
-    width: '100%'
+    width: '100%',
+    opacity: 1
   },
 
   continueText: {
     fontSize: 18,
     fontWeight: "600",
     color: "#4B5563",
+    color: 'black',
     width: '100%',
     alignItems: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
   },
 })
