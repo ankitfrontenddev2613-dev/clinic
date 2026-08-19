@@ -36,6 +36,7 @@ const ChoosePlan = ({ price }) => {
     const selected = plans.find(
       plan => plan.id === selectedPlan
     )
+
     router.push({
       pathname: '/signup',
       params: {

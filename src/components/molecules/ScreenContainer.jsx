@@ -16,7 +16,7 @@ export default ScreenContainer
 
 const styles = StyleSheet.create({
   container: {
-    padding: moderateScale(20),
+    paddingHorizontal: moderateScale(25),
     backgroundColor: '#f1f4ee',
     flex: 1
   }

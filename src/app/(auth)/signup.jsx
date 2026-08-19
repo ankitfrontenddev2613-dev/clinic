@@ -3,12 +3,16 @@ import Button from '@/components/atoms/Button';
 import HeaderTitle from '@/components/molecules/HeaderTitle';
 import ScreenContainer from '@/components/molecules/ScreenContainer';
 import { AntDesign } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
+import { useDispatch } from 'react-redux';
 import { default as FormInput } from '../../components/atoms/FormInput';
-const signup = () => {
+import signup from '../../redux/slices/authSlice';
+
+const SignUp = () => {
   const router = useRouter()
   const inputFields = [
     {
@@ -53,20 +57,48 @@ const signup = () => {
     setInput(values);
   };
   const { plan, price } = useLocalSearchParams()
+
+  const dispatch = useDispatch()
+  const handleSignup = async () => {
+    const isEmpty = input.some(value => !value.trim())
+    if (isEmpty) {
+      Alert.alert(
+        'Error', 'Please fill all fields'
+      )
+      return
+    }
+    const user = {
+      input, plan, price,
+    };
+    try {
+      await AsyncStorage.setItem('user', JSON.stringify(user))
+      dispatch(signup(user));
+      Alert.alert(
+        'Success',
+        'Account created successfully'
+      );
+      router.replace('/createAccount');
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <ScreenContainer childContainerStyle={styles.container}>
       <View style={styles.body}>
         <BackButton />
+
         <View style={styles.textContainer}>
-          <HeaderTitle SubTitle="Step 1 of 2" Title="Tell us about your clinic" headingStyle={{ marginBottom: 0 }} />
+          <HeaderTitle SubTitle="Step 2 of 2" Title="Tell us about your clinic" headingStyle={{ marginBottom: 0 }} />
           <Text style={styles.pickText}>Starter plan <Text style={styles.boldText}>{plan} ·₹{price}/mo</Text></Text>
         </View>
+
         <View style={styles.inputContent}>
           {inputFields.map((item, index) => (
             <View style={styles.inputRow} key={index}>
               <FormInput
                 value={input[index]}
-                onChangeText={(text) => handleChange(text, input)}
+                onChangeText={(text) => handleChange(text, index)}
                 placeholder={item.placeholder}
                 keyboardType={item.keyboardType}
                 inputText={styles.input}
@@ -80,7 +112,8 @@ const signup = () => {
         <View style={styles.buttonRow}>
           <Button
             title="Sign in"
-            href="/(main)/home"
+
+            onPress={() => router.push('/createAccount')}
             buttonStyle={[{ backgroundColor: 'black', color: "#fff", width: '100%' }, styles.button]}
             textStyle={{ fontSize: 18, color: 'white', width: '100%' }}
 
@@ -93,7 +126,7 @@ const signup = () => {
   )
 }
 
-export default signup
+export default SignUp
 
 const styles = StyleSheet.create({
   container: {

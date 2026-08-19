@@ -12,22 +12,22 @@ const Auth = () => {
   const navigateToNextScreen = () => {
     // router.push('/(auth)/verify_otp'); // Navigate to the next screen after loading
     // router.push('/(auth)/signup'); // Navigate to the next screen after loading
-    router.push('/(auth)/terms_agree'); // Navigate to the next screen after loading
+    router.push('/(auth)/createAccount'); // Navigate to the next screen after loading
   }
   const loading = () => {
     setIsLoading(true);
-    setTimeout(navigateToNextScreen, 3000); // Navigate after 2 seconds
+    setTimeout(navigateToNextScreen, 1); // Navigate after 2 seconds
   }
 
   useEffect(() => { // Simulate a loading state for 2 seconds
-    setTimeout(loading, 2000);
+    setTimeout(loading, 1);
   }, []);
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}></View>
       <View style={styles.body}>
-        <Image source={imagePath.reactLogo} style={{ width: 100, height: 100 }, styles.Image} />
+        <Image source={imagePath.reactLogo} style={[{ width: 100, height: 100 }, styles.Image]} />
       </View>
       <View style={styles.footer}>
         <>

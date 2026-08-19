@@ -10,8 +10,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { moderateScale } from 'react-native-size-matters';
 import { useDispatch } from 'react-redux';
 const Login = () => {
-  const [email, setEmail] = useState('ankit')
-  const [password, setpassword] = useState('ankit12345');
+  const [email, setEmail] = useState('ankitchauhan@phoeniixx.in')
+  const [password, setpassword] = useState('ankit@12345');
 
   const dispatch = useDispatch()
   const handleLogin = async () => {
