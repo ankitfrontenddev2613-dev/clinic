@@ -8,14 +8,17 @@ import { useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { moderateScale } from 'react-native-size-matters';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 const Login = () => {
-  const [email, setEmail] = useState('ankitchauhan@phoeniixx.in')
-  const [password, setpassword] = useState('ankit@12345');
+  const [email, setEmail] = useState('')
+  const [password, setpassword] = useState('');
 
   const dispatch = useDispatch()
+  const user = useSelector(
+    (state) => state.auth.user
+  )
   const handleLogin = async () => {
-    if (!email || !password) {
+    if (!email.trim() || !password.trim()) {
       Alert.alert(
         'Error',
         'Please enter email and password'
@@ -24,20 +27,31 @@ const Login = () => {
     }
     try {
       const storedUser = await AsyncStorage.getItem('user')
+      console.log('STORED USER:', storedUser);
       if (!storedUser) {
         Alert.alert(
           'Error',
           'No account found. Please signup first.'
-        )
+        );
         return;
       }
-      const user = JSON.parse(storedUser);
+      const storedUserData = JSON.parse(storedUser);
+
+      console.log('PARSED USER:', storedUserData);
+
+      console.log('EMAIL:', storedUserData?.email);
+      console.log('PASSWORD:', storedUserData?.password);
+
       if (
-        user.email === email &&
-        user.passwrod === password
+        storedUserData?.email.trim() === email.trim() &&
+        storedUserData?.password === password
       ) {
-        dispatch(login(user))
-        router.replace('/(main)/home')
+        await AsyncStorage.setItem(
+          'user',
+          JSON.stringify(storedUserData)
+        );
+        dispatch(login(storedUserData));
+        router.replace('/(main)/home');
       } else {
         Alert.alert(
           'Login Failed',
@@ -45,7 +59,7 @@ const Login = () => {
         );
       }
     } catch (error) {
-      console.log(error);
+      console.log('LOGIN ERROR:', error);
     }
   }
   return (
@@ -67,6 +81,7 @@ const Login = () => {
               keyboardType="email-address"
               onChangeText={setEmail}
             />
+            <Text>{user?.email}</Text>
             <FormInput
               label="Password"
               placeholder="Type here to Password"
@@ -75,11 +90,11 @@ const Login = () => {
               inputText={styles.input}
               onChangeText={setpassword}
             />
+            <Text>{user?.password}</Text>
           </View>
           <View style={styles.buttonRow}>
             <Button
               title="Sign in"
-              href="/(main)/home"
               onPress={handleLogin}
               buttonStyle={[styles.button]}
               textStyle={{ fontSize: 18, color: 'white', width: '100%' }}

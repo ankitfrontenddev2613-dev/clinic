@@ -5,7 +5,7 @@ const AuthRoot = () => {
   return (
     <Stack screenOptions={{ headerShown: false }} >
       <Stack.Screen name="index" />
-      <Stack.Screen name="terms_agree" />
+      <Stack.Screen name="mainPage" />
       <Stack.Screen name="login" />
       <Stack.Screen name="choose-plan" />
       <Stack.Screen name="signup" />

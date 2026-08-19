@@ -12,7 +12,7 @@ const Auth = () => {
   const navigateToNextScreen = () => {
     // router.push('/(auth)/verify_otp'); // Navigate to the next screen after loading
     // router.push('/(auth)/signup'); // Navigate to the next screen after loading
-    router.push('/(auth)/createAccount'); // Navigate to the next screen after loading
+    router.push('/(auth)/mainPage'); // Navigate to the next screen after loading
   }
   const loading = () => {
     setIsLoading(true);

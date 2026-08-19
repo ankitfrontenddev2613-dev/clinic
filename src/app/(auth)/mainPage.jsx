@@ -4,7 +4,7 @@ import { router } from 'expo-router'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { moderateScale } from 'react-native-size-matters'
-const terms_agree = () => {
+const MainPage = () => {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
@@ -31,7 +31,7 @@ const terms_agree = () => {
   )
 }
 
-export default terms_agree
+export default MainPage
 
 const styles = StyleSheet.create({
   container: {

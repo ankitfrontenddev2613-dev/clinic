@@ -1,12 +1,15 @@
 import { Feather } from '@expo/vector-icons'
-import { router, useLocalSearchParams } from 'expo-router'
+import { router } from 'expo-router'
 import { StyleSheet, Text, View } from 'react-native'
 import { moderateScale } from 'react-native-size-matters'
+import { useSelector } from 'react-redux'
 import Button from '../../components/atoms/Button'
 import ScreenContainer from '../../components/molecules/ScreenContainer'
 
 const createAccount = () => {
-  const { plan, price } = useLocalSearchParams()
+  const user = useSelector(
+    (state) => state.auth.user
+  )
   return (
     <ScreenContainer childContainerStyle={{ flex: 1 }}>
       <View style={styles.content}>
@@ -15,7 +18,7 @@ const createAccount = () => {
         </View>
         <View style={styles.createBox}>
           <Text style={styles.title}>Clinic account created</Text>
-          <Text style={styles.subTitle}>Your clinic is set up on the {plan} plan (₹{price}/mo).</Text>
+          <Text style={styles.subTitle}>Your clinic is set up on the {user?.plan} plan (₹{user?.price}/mo).</Text>
           <Text style={styles.description}>We've sent your login details to your email. Sign in to add your doctors and start managing your queue.</Text>
         </View>
         <Button

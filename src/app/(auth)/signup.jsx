@@ -2,7 +2,7 @@ import BackButton from '@/components/atoms/BackButton';
 import Button from '@/components/atoms/Button';
 import HeaderTitle from '@/components/molecules/HeaderTitle';
 import ScreenContainer from '@/components/molecules/ScreenContainer';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Ionicons, MaterialIcons, SimpleLineIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
@@ -10,7 +10,7 @@ import { Alert, StyleSheet, Text, View } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 import { useDispatch } from 'react-redux';
 import { default as FormInput } from '../../components/atoms/FormInput';
-import signup from '../../redux/slices/authSlice';
+import { signUp } from '../../redux/slices/authSlice';
 
 const SignUp = () => {
   const router = useRouter()
@@ -27,25 +27,37 @@ const SignUp = () => {
       title: 'Email',
       placeholder: 'clinic@example.com',
       keyboardType: 'email-address',
-      iconTag: AntDesign,
-      iconName: 'mail',
-      icon: <AntDesign name="mail" size={18} color="#666" />,
+      secureTextEntry: false,
+      iconTag: Ionicons,
+      iconName: 'mail-outline',
+      icon: <Ionicons name="mail-outline" color="#000" size={24} />,
     },
     {
       title: 'Phone Number',
       placeholder: '+91 85586 58542',
       keyboardType: 'phone-pad',
-      iconTag: AntDesign,
+      secureTextEntry: false,
+      iconTag: SimpleLineIcons,
       iconName: 'phone',
-      icon: <AntDesign name="phone" size={18} color="#666" />,
+      icon: <SimpleLineIcons name="phone" color="#000" size={24} />,
     },
     {
       title: 'Location',
       placeholder: 'City, State',
       keyboardType: 'default',
+      secureTextEntry: false,
       iconTag: AntDesign,
       iconName: 'environment',
       icon: <AntDesign name="environment" size={18} color="#666" />,
+    },
+    {
+      title: 'Passowrd',
+      placeholder: 'Password',
+      keyboardType: 'default',
+      secureTextEntry: true,
+      iconTag: MaterialIcons,
+      iconName: 'security',
+      icon: <MaterialIcons name="security" color="#000" size={24} />,
     },
   ];
 
@@ -68,11 +80,15 @@ const SignUp = () => {
       return
     }
     const user = {
-      input, plan, price,
+      clinicName: input[0],
+      email: input[1],
+      phone: input[2],
+      location: input[3],
+      password: input[4], plan, price,
     };
     try {
       await AsyncStorage.setItem('user', JSON.stringify(user))
-      dispatch(signup(user));
+      dispatch(signUp(user));
       Alert.alert(
         'Success',
         'Account created successfully'
@@ -103,6 +119,7 @@ const SignUp = () => {
                 keyboardType={item.keyboardType}
                 inputText={styles.input}
                 icon={item.iconTag}
+                secureTextEntry={item.secureTextEntry}
                 iconName={item.iconName}
                 label={item.title}
               />
@@ -113,7 +130,7 @@ const SignUp = () => {
           <Button
             title="Sign in"
 
-            onPress={() => router.push('/createAccount')}
+            onPress={handleSignup}
             buttonStyle={[{ backgroundColor: 'black', color: "#fff", width: '100%' }, styles.button]}
             textStyle={{ fontSize: 18, color: 'white', width: '100%' }}
 
